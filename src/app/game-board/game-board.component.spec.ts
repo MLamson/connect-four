@@ -33,6 +33,18 @@ describe('GameBoardComponent', () => {
     expect(gameBoardComponent).toEqual(new GameBoardComponent());
   });
 
+  it('should create GameBoard with empty board', () => {
+    let gameBoardComponent: GameBoardComponent = new GameBoardComponent();
+    let gameBoard: any = [["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]];
+    expect(gameBoard).toEqual(gameBoardComponent.gameBoard);
+  });
+
   it('should create GameBoard with initial state of NoToken', () => {
     let gameBoardComponent: GameBoardComponent = new GameBoardComponent();
     let result: NoTokenState = new NoTokenState(gameBoardComponent);

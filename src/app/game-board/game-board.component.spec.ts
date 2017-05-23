@@ -56,4 +56,13 @@ describe('GameBoardComponent', () => {
     gameBoardComponent.insertToken();
     expect(gameBoardComponent.state).toEqual(new HasTokenState(gameBoardComponent));
   });
+
+  it('should create GameBoard with currentPlayer set', () => {
+    let gameBoardComponent: GameBoardComponent = new GameBoardComponent();
+    expect(gameBoardComponent.currentPlayer).toEqual("Yellow");
+  });
+
+  it('should update currentPlayer when in hasTokenState', () => {
+    let gameBoardComponent: GameBoardComponent = new GameBoardComponent();
+  });
 });

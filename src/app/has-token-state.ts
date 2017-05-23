@@ -12,6 +12,6 @@ export class HasTokenState implements State {
       this.gameBoardComponent.currentPlayer = "Yellow";
     }
 
-    this.gameBoardComponent.setState(this.gameBoardComponent.noTokenState);
+    this.gameBoardComponent.setState(this.gameBoardComponent.getNoTokenState());
   }
 }

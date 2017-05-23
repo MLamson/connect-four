@@ -54,7 +54,7 @@ describe('GameBoardComponent', () => {
   it('should call insertToken function and set state to HasTokenState', () => {
     let gameBoardComponent: GameBoardComponent = new GameBoardComponent();
     gameBoardComponent.insertToken();
-    expect(gameBoardComponent.state).toEqual(new HasTokenState(gameBoardComponent));
+    expect(gameBoardComponent.state).toEqual(new NoTokenState(gameBoardComponent));
   });
 
   it('should create GameBoard with currentPlayer set', () => {
@@ -64,5 +64,18 @@ describe('GameBoardComponent', () => {
 
   it('should update currentPlayer when in hasTokenState', () => {
     let gameBoardComponent: GameBoardComponent = new GameBoardComponent();
+    gameBoardComponent.insertToken();
+    expect(gameBoardComponent.currentPlayer).toEqual("Red");
+  });
+
+  it('should update currentPlayer when insertToken is called multiple times', () => {
+    let gameBoardComponent: GameBoardComponent = new GameBoardComponent();
+    gameBoardComponent.insertToken();
+    gameBoardComponent.insertToken();
+    gameBoardComponent.insertToken();
+    gameBoardComponent.insertToken();
+    gameBoardComponent.insertToken();
+    gameBoardComponent.insertToken();
+    expect(gameBoardComponent.currentPlayer).toEqual("Yellow");
   });
 });

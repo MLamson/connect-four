@@ -36,6 +36,7 @@ export class GameBoardComponent implements OnInit {
   }
 
   insertToken() {
+    this.state = this.hasTokenState;
     this.state.insertToken();
   }
 

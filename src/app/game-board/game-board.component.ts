@@ -18,7 +18,7 @@ export class GameBoardComponent implements OnInit {
     this.noTokenState = new NoTokenState(this);
     this.hasTokenState = new HasTokenState(this);
     this.state = this.noTokenState;
-    this.currentPlayer = "Yellow";
+    this.currentPlayer = "yellow";
 
     this.gameBoard = [["open", "open", "open", "open", "open", "open"],
                       ["open", "open", "open", "open", "open", "open"],
@@ -32,9 +32,9 @@ export class GameBoardComponent implements OnInit {
   ngOnInit() {
   }
 
-  insertToken() {
+  insertToken(column: number, row: number) {
     this.state = this.getHasTokenState();
-    this.state.insertToken();
+    this.state.insertToken(column, row);
   }
 
   setState(state: State): void {

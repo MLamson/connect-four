@@ -1,3 +1,3 @@
 interface State {
-  insertToken();
+  insertToken(column: number, row: number);
 }

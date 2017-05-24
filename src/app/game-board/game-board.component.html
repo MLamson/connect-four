@@ -1,1 +1,14 @@
 <h1>Game Board Will Go Here.</h1>
+<div class="current-player" [class.red-player]="currentPlayer === 'red'" [class.blue-player]="currentPlayer === 'blue'">Current Player is: {{ currentPlayer }}</div>
+
+<div class="game-container">
+  <div class="board-flex">
+    <div *ngFor="let position of gameBoard; let column = index">
+      <div *ngFor="let rows of position; let row = index" class="flex-row">
+        <div (click)="updateToken(column, row)" class="piece-position" [class.red-player]="position[row] === 'red'" [class.blue-player]="position[row] === 'blue'">{{ position[row] }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="resetBoard()">Restart Game</button>

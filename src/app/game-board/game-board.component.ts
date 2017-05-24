@@ -14,9 +14,6 @@ export class GameBoardComponent implements OnInit {
   gameBoard: any;
   currentPlayer: string;
 
-
-
-
   constructor() {
     this.noTokenState = new NoTokenState(this);
     this.hasTokenState = new HasTokenState(this);
@@ -24,12 +21,12 @@ export class GameBoardComponent implements OnInit {
     this.currentPlayer = "Yellow";
 
     this.gameBoard = [["open", "open", "open", "open", "open", "open"],
-      ["open", "open", "open", "open", "open", "open"],
-      ["open", "open", "open", "open", "open", "open"],
-      ["open", "open", "open", "open", "open", "open"],
-      ["open", "open", "open", "open", "open", "open"],
-      ["open", "open", "open", "open", "open", "open"],
-      ["open", "open", "open", "open", "open", "open"]];
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"]];
   }
 
   ngOnInit() {

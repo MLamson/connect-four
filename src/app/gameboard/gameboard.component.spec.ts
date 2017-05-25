@@ -91,12 +91,27 @@ describe('GameboardComponent', () => {
 
   it('should update currentPlayer when insertToken is called multiple times', () => {
     let gameBoardComponent: GameboardComponent = new GameboardComponent();
-    gameBoardComponent.insertToken(1, 1);
-    gameBoardComponent.insertToken(1, 2);
-    gameBoardComponent.insertToken(1, 3);
-    gameBoardComponent.insertToken(1, 4);
-    gameBoardComponent.insertToken(2, 3);
-    gameBoardComponent.insertToken(3, 3);
+    gameBoardComponent.insertToken(0, 5);
+    gameBoardComponent.insertToken(0, 4);
+    gameBoardComponent.insertToken(0, 3);
+    gameBoardComponent.insertToken(0, 2);
+    gameBoardComponent.insertToken(0, 1);
+    gameBoardComponent.insertToken(0, 0);
     expect(gameBoardComponent.currentPlayer).toEqual("yellow");
+  });
+
+  it('should not register click if clicking on a space already having a token', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let currentGameboard: any = [["open", "open", "open", "open", "open", "yellow"],
+                                ["open", "open", "open", "open", "open", "open"],
+                                ["open", "open", "open", "open", "open", "open"],
+                                ["open", "open", "open", "open", "open", "open"],
+                                ["open", "open", "open", "open", "open", "open"],
+                                ["open", "open", "open", "open", "open", "open"],
+                                ["open", "open", "open", "open", "open", "open"]];
+    gameboardComponent.gameboard = currentGameboard;
+    gameboardComponent.insertToken(0, 5);
+
+    expect(gameboardComponent.currentPlayer).toEqual("yellow");
   });
 });

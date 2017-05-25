@@ -35,8 +35,12 @@ export class GameboardComponent implements OnInit {
   }
 
   insertToken(column: number, row: number) {
-    this.state = this.getHasTokenState();
-    this.state.insertToken(column, row);
+    console.log(column, row);
+    if (this.gameboard[column][row] === 'open') {
+      console.log(this.gameboard[column][row]);
+      this.state = this.getHasTokenState();
+      this.state.insertToken(column, row);
+    }
   }
 
   setState(state: State): void {

@@ -102,8 +102,8 @@ describe('GameboardComponent', () => {
 
   it('should not register click if clicking on a space already having a token', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
-    let currentGameboard: any = [["open", "open", "open", "open", "open", "yellow"],
-                                ["open", "open", "open", "open", "open", "open"],
+    let currentGameboard: any = [["open", "open", "open", "open", "open", "red"],
+                                ["open", "open", "open", "open", "open", "yellow"],
                                 ["open", "open", "open", "open", "open", "open"],
                                 ["open", "open", "open", "open", "open", "open"],
                                 ["open", "open", "open", "open", "open", "open"],
@@ -111,7 +111,41 @@ describe('GameboardComponent', () => {
                                 ["open", "open", "open", "open", "open", "open"]];
     gameboardComponent.gameboard = currentGameboard;
     gameboardComponent.insertToken(0, 5);
-
     expect(gameboardComponent.currentPlayer).toEqual("yellow");
+  });
+
+  it('should check for winning player', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.insertToken(0,5);
+    expect(gameboardComponent.winningPlayer).toEqual("none");
+  });
+
+  it('should check for four in a row', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    expect(gameboardComponent.isFourInARow()).toBeFalsy();
+  });
+
+  it('should return true for four in a row', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "yellow"],
+                                    ["open", "open", "open", "open", "open", "yellow"],
+                                    ["open", "open", "open", "open", "open", "yellow"],
+                                    ["open", "open", "open", "open", "open", "yellow"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"]];
+    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+  });
+
+  it('should return true for four in a row', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"]];
+    expect(gameboardComponent.isFourInARow()).toBeTruthy();
   });
 });

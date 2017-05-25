@@ -13,14 +13,7 @@ export class GameboardComponent implements OnInit {
   state: State;
   gameboard: any;
   currentPlayer: string;
-
-  emptyGameboard: any = [["open", "open", "open", "open", "open", "open"],
-                        ["open", "open", "open", "open", "open", "open"],
-                        ["open", "open", "open", "open", "open", "open"],
-                        ["open", "open", "open", "open", "open", "open"],
-                        ["open", "open", "open", "open", "open", "open"],
-                        ["open", "open", "open", "open", "open", "open"],
-                        ["open", "open", "open", "open", "open", "open"]];
+  winningPlayer: string;
 
   constructor() {
     this.noTokenState = new NoTokenState(this);
@@ -28,7 +21,13 @@ export class GameboardComponent implements OnInit {
     this.state = this.noTokenState;
     this.currentPlayer = "yellow";
 
-    this.gameboard = this.emptyGameboard;
+    this.gameboard = [["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"]];
   }
 
   ngOnInit() {
@@ -40,6 +39,7 @@ export class GameboardComponent implements OnInit {
       console.log(this.gameboard[column][row]);
       this.state = this.getHasTokenState();
       this.state.insertToken(column, row);
+      this.checkForWinner();
     }
   }
 
@@ -57,6 +57,29 @@ export class GameboardComponent implements OnInit {
 
   resetBoard(): void {
     this.currentPlayer = "yellow";
-    this.gameboard = this.emptyGameboard;
+    this.gameboard = [["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"]];
+  }
+
+  private checkForWinner(): string {
+    this.winningPlayer = "none";
+    return this.winningPlayer;
+  }
+
+  isFourInARow(): boolean {
+    for (let column: number = 0; column <= 6; column++) {
+      if (this.gameboard[column][5] === this.gameboard[column][5]
+        && this.gameboard[column][5] === this.gameboard[column][5]
+        && this.gameboard[column][5] === this.gameboard[column][5]
+        && this.gameboard[column][5] !== "open") {
+        return true;
+      }
+    }
+    return false;
   }
 }

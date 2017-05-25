@@ -1,8 +1,8 @@
-import {GameBoardComponent} from "./game-board/game-board.component";
+import {GameboardComponent} from "./gameboard/gameboard.component";
 export class NoTokenState implements State {
-  gameBoardComponent: GameBoardComponent;
+  gameBoardComponent: GameboardComponent;
 
-  constructor(gameboardComponent: GameBoardComponent) {
+  constructor(gameboardComponent: GameboardComponent) {
     this.gameBoardComponent = gameboardComponent;
   }
   insertToken(): void {

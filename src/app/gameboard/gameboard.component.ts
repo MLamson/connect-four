@@ -4,15 +4,23 @@ import { HasTokenState } from "../has-token-state";
 
 @Component({
   selector: 'app-game-board',
-  templateUrl: './game-board.component.html',
-  styleUrls: ['./game-board.component.css']
+  templateUrl: 'gameboard.component.html',
+  styleUrls: ['gameboard.component.css']
 })
-export class GameBoardComponent implements OnInit {
+export class GameboardComponent implements OnInit {
   noTokenState: NoTokenState;
   hasTokenState: HasTokenState;
   state: State;
-  gameBoard: any;
+  gameboard: any;
   currentPlayer: string;
+
+  emptyGameboard: any = [["open", "open", "open", "open", "open", "open"],
+                        ["open", "open", "open", "open", "open", "open"],
+                        ["open", "open", "open", "open", "open", "open"],
+                        ["open", "open", "open", "open", "open", "open"],
+                        ["open", "open", "open", "open", "open", "open"],
+                        ["open", "open", "open", "open", "open", "open"],
+                        ["open", "open", "open", "open", "open", "open"]];
 
   constructor() {
     this.noTokenState = new NoTokenState(this);
@@ -20,13 +28,7 @@ export class GameBoardComponent implements OnInit {
     this.state = this.noTokenState;
     this.currentPlayer = "yellow";
 
-    this.gameBoard = [["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"]];
+    this.gameboard = this.emptyGameboard;
   }
 
   ngOnInit() {
@@ -47,5 +49,10 @@ export class GameBoardComponent implements OnInit {
 
   getNoTokenState(): State {
     return this.noTokenState;
+  }
+
+  resetBoard(): void {
+    this.currentPlayer = "yellow";
+    this.gameboard = this.emptyGameboard;
   }
 }

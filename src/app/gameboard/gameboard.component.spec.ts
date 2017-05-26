@@ -185,4 +185,16 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "open"]];
     expect(gameboardComponent.isFourInARow()).toBeTruthy();
   });
+
+  it('should return true for four in a row diagonal bottom left to top right', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "yellow", "open", "open", "open"],
+                                    ["open", "open", "open", "yellow", "open", "open"],
+                                    ["open", "open", "open", "open", "yellow", "open"],
+                                    ["open", "open", "open", "open", "open", "yellow"]];
+    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+  });
 });

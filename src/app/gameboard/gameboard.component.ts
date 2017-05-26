@@ -91,12 +91,28 @@ export class GameboardComponent implements OnInit {
       }
     }
 
-    if (this.gameboard[0][5] === this.gameboard[1][4]
-        && this.gameboard[1][4] === this.gameboard[2][3]
-        && this.gameboard[2][3] === this.gameboard[3][2]
-        && this.gameboard[0][5] !== "open") {
-      console.log("Winner Diag")
-      return true;
+    for (let column: number = 0; column <= 3; column++) {
+      for (let row: number = 5; row >= 0; row--) {
+        if (this.gameboard[column][row] === this.gameboard[column + 1][row - 1]
+          && this.gameboard[column + 1][row - 1] === this.gameboard[column + 2][row - 2]
+          && this.gameboard[column + 2][row - 2] === this.gameboard[column + 3][row - 3]
+          && this.gameboard[column][row] !== "open") {
+          console.log("winner Diag for loop");
+          return true;
+        }
+      }
+    }
+
+    for (let column: number = 6; column >= 3; column--) {
+      for (let row: number = 5; row >= 0; row--) {
+        if (this.gameboard[column][row] === this.gameboard[column - 1][row - 1]
+          && this.gameboard[column - 1][row - 1] === this.gameboard[column - 2][row - 2]
+          && this.gameboard[column - 2][row - 2] === this.gameboard[column - 3][row - 3]
+          && this.gameboard[column][row] !== "open") {
+          console.log("winner Diag for loop");
+          return true;
+        }
+      }
     }
     return false;
   }

@@ -122,10 +122,11 @@ describe('GameboardComponent', () => {
 
   it('should check for four in a row', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    console.log(gameboardComponent.gameboard);
     expect(gameboardComponent.isFourInARow()).toBeFalsy();
   });
 
-  it('should return true for four in a row', () => {
+  it('should return true for four in a row horizontal', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "yellow"],
                                     ["open", "open", "open", "open", "open", "yellow"],
@@ -137,13 +138,49 @@ describe('GameboardComponent', () => {
     expect(gameboardComponent.isFourInARow()).toBeTruthy();
   });
 
-  it('should return true for four in a row', () => {
+  it('should return true for four in a row horizontal', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"]];
+    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+  });
+
+  it('should return false for four in a row horizontal', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"]];
+    expect(gameboardComponent.isFourInARow()).toBeFalsy();
+  });
+
+  it('should return true for four in a row vertical', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "red", "red", "red", "red"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"]];
+    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+  });
+
+  it('should return true for four in a row diagonal', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "red"],
+                                    ["open", "open", "open", "open", "red", "open"],
+                                    ["open", "open", "open", "red", "open", "open"],
+                                    ["open", "open", "red", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
     expect(gameboardComponent.isFourInARow()).toBeTruthy();

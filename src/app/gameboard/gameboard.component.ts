@@ -93,10 +93,7 @@ export class GameboardComponent implements OnInit {
 
     for (let column: number = 0; column <= 3; column++) {
       for (let row: number = 5; row >= 0; row--) {
-        if (this.gameboard[column][row] === this.gameboard[column + 1][row - 1]
-          && this.gameboard[column + 1][row - 1] === this.gameboard[column + 2][row - 2]
-          && this.gameboard[column + 2][row - 2] === this.gameboard[column + 3][row - 3]
-          && this.gameboard[column][row] !== "open") {
+        if (this.checkFourInARowDiagonalStartBottomRight(column, row)) {
           console.log("winner Diag for loop");
           return true;
         }
@@ -105,16 +102,27 @@ export class GameboardComponent implements OnInit {
 
     for (let column: number = 6; column >= 3; column--) {
       for (let row: number = 5; row >= 0; row--) {
-        if (this.gameboard[column][row] === this.gameboard[column - 1][row - 1]
-          && this.gameboard[column - 1][row - 1] === this.gameboard[column - 2][row - 2]
-          && this.gameboard[column - 2][row - 2] === this.gameboard[column - 3][row - 3]
-          && this.gameboard[column][row] !== "open") {
+        if (this.checkFourInARowStartBottomLeft(column, row)) {
           console.log("winner Diag for loop");
           return true;
         }
       }
     }
     return false;
+  }
+
+  private checkFourInARowStartBottomLeft(column: number, row: number) {
+    return this.gameboard[column][row] === this.gameboard[column - 1][row - 1]
+      && this.gameboard[column - 1][row - 1] === this.gameboard[column - 2][row - 2]
+      && this.gameboard[column - 2][row - 2] === this.gameboard[column - 3][row - 3]
+      && this.gameboard[column][row] !== "open";
+  }
+
+  private checkFourInARowDiagonalStartBottomRight(column: number, row: number) {
+    return this.gameboard[column][row] === this.gameboard[column + 1][row - 1]
+      && this.gameboard[column + 1][row - 1] === this.gameboard[column + 2][row - 2]
+      && this.gameboard[column + 2][row - 2] === this.gameboard[column + 3][row - 3]
+      && this.gameboard[column][row] !== "open";
   }
 
   private checkForInARowVertical(column: number, row: number) {

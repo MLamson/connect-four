@@ -1,5 +1,5 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
-export class addGamePiece implements State {
+export class AddGamePiece implements State {
   gameBoardComponent: GameboardComponent;
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
@@ -8,9 +8,9 @@ export class addGamePiece implements State {
 
     if (this.gameBoardComponent.gameboard[column][row] === "open") {
       // this.state.insertToken(column, row);
-      this.gameBoardComponent.isFourInARow();
-      this.gameBoardComponent.checkForWinner();
+
     }
+
 
     console.log(column, row);
 
@@ -35,11 +35,23 @@ export class addGamePiece implements State {
       }
     }
 
+    if (this.gameBoardComponent.isFourInARow()) {
+      this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
+    }
+    this.gameBoardComponent.checkForWinner();
+
     if (this.gameBoardComponent.currentPlayer === "yellow") {
       this.gameBoardComponent.currentPlayer = "red";
     }
     else if (this.gameBoardComponent.currentPlayer === "red") {
       this.gameBoardComponent.currentPlayer = "yellow";
     }
+  }
+  isFourInARow(): string {
+    return "do I call is four in a row from here?";
+  }
+
+  checkTie(): string {
+    return "check tie in add game piece";
   }
 }

@@ -6,6 +6,7 @@ import { DebugElement } from '@angular/core';
 import { GameboardComponent } from './gameboard.component';
 import {NoTokenState} from "../no-token-state";
 import {addGamePiece} from "../add-game-piece";
+import {WonState} from "../won-state";
 
 describe('GameboardComponent', () => {
   let component: GameboardComponent;
@@ -184,5 +185,18 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "yellow", "open"],
                                     ["open", "open", "open", "open", "open", "yellow"]];
     expect(gameboardComponent.isFourInARow()).toBeTruthy();
+  });
+
+  it('should set state to WonState if four in a row', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "open", "open", "open", "open"],
+                                    ["open", "open", "yellow", "open", "open", "open"],
+                                    ["open", "open", "open", "yellow", "open", "open"],
+                                    ["open", "open", "open", "open", "yellow", "open"],
+                                    ["open", "open", "open", "open", "open", "yellow"]];
+    let result: boolean = gameboardComponent.isFourInARow();
+    expect(result).toEqual(true);
   });
 });

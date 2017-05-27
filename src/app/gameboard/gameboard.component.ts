@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { addGamePiece } from "../add-game-piece";
+import { Won } from "../won";
 
 @Component({
   selector: 'app-game-board',
@@ -8,6 +10,7 @@ import { addGamePiece } from "../add-game-piece";
 })
 export class GameboardComponent implements OnInit {
   hasTokenState: addGamePiece;
+  won: Won;
   state: State;
   gameboard: any;
   currentPlayer: string;

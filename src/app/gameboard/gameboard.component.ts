@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NoTokenState } from "../no-token-state";
-import { HasTokenState } from "../has-token-state";
+import { addGamePiece } from "../add-game-piece";
 
 @Component({
   selector: 'app-game-board',
@@ -8,17 +7,15 @@ import { HasTokenState } from "../has-token-state";
   styleUrls: ['gameboard.component.css']
 })
 export class GameboardComponent implements OnInit {
-  noTokenState: NoTokenState;
-  hasTokenState: HasTokenState;
+  hasTokenState: addGamePiece;
   state: State;
   gameboard: any;
   currentPlayer: string;
   winningPlayer: string;
 
   constructor() {
-    this.noTokenState = new NoTokenState(this);
-    this.hasTokenState = new HasTokenState(this);
-    this.state = this.noTokenState;
+    this.hasTokenState = new addGamePiece(this);
+    this.state = this.hasTokenState;
     this.currentPlayer = "yellow";
 
     this.gameboard = [["open", "open", "open", "open", "open", "open"],
@@ -34,26 +31,9 @@ export class GameboardComponent implements OnInit {
   }
 
   insertToken(column: number, row: number) {
-    console.log(column, row);
-    if (this.gameboard[column][row] === 'open') {
-      console.log(this.gameboard[column][row]);
-      this.state = this.getHasTokenState();
+    if (this.gameboard[column][row] === "open") {
       this.state.insertToken(column, row);
-      this.isFourInARow();
-      this.checkForWinner();
     }
-  }
-
-  setState(state: State): void {
-    this.state = state;
-  }
-
-  getHasTokenState(): State {
-    return this.hasTokenState;
-  }
-
-  getNoTokenState(): State {
-    return this.noTokenState;
   }
 
   resetBoard(): void {
@@ -67,7 +47,7 @@ export class GameboardComponent implements OnInit {
                       ["open", "open", "open", "open", "open", "open"]];
   }
 
-  private checkForWinner(): string {
+  checkForWinner(): string {
     this.winningPlayer = "none";
     return this.winningPlayer;
   }

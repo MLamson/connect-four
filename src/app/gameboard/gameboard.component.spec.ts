@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { GameboardComponent } from './gameboard.component';
 import {NoTokenState} from "../no-token-state";
-import {HasTokenState} from "../has-token-state";
+import {addGamePiece} from "../add-game-piece";
 
 describe('GameboardComponent', () => {
   let component: GameboardComponent;
@@ -64,18 +64,6 @@ describe('GameboardComponent', () => {
                                   ["open", "open", "open", "open", "open", "open"],
                                   ["open", "open", "open", "open", "open", "open"]];
     expect(gameBoardComponent.gameboard).toEqual(restartedGameBoard);
-  });
-
-  it('should create GameBoard with initial state of NoToken', () => {
-    let gameBoardComponent: GameboardComponent = new GameboardComponent();
-    let result: NoTokenState = new NoTokenState(gameBoardComponent);
-    expect(result).toEqual(gameBoardComponent.state);
-  });
-
-  it('should call insertToken function and set state to HasTokenState', () => {
-    let gameBoardComponent: GameboardComponent = new GameboardComponent();
-    gameBoardComponent.insertToken(1, 1);
-    expect(gameBoardComponent.state).toEqual(new NoTokenState(gameBoardComponent));
   });
 
   it('should create GameBoard with currentPlayer set', () => {

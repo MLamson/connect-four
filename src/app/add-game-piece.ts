@@ -1,10 +1,16 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
-export class HasTokenState implements State {
+export class addGamePiece implements State {
   gameBoardComponent: GameboardComponent;
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
   }
   insertToken(column: number, row: number) {
+
+    if (this.gameBoardComponent.gameboard[column][row] === "open") {
+      // this.state.insertToken(column, row);
+      this.gameBoardComponent.isFourInARow();
+      this.gameBoardComponent.checkForWinner();
+    }
 
     console.log(column, row);
 
@@ -35,7 +41,5 @@ export class HasTokenState implements State {
     else if (this.gameBoardComponent.currentPlayer === "red") {
       this.gameBoardComponent.currentPlayer = "yellow";
     }
-
-    this.gameBoardComponent.setState(this.gameBoardComponent.getNoTokenState());
   }
 }

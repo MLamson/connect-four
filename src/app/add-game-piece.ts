@@ -10,16 +10,16 @@ export class AddGamePiece implements State {
 
     this.lowestOpenSpace(column, row);
 
-    if (this.gameBoardComponent.isFourInARow()) {
+    if (this.gameBoardComponent.checkWin()) {
       this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
     }
-    this.gameBoardComponent.checkForWinner();
-
-    if (this.gameBoardComponent.currentPlayer === "yellow") {
-      this.gameBoardComponent.currentPlayer = "red";
-    }
-    else if (this.gameBoardComponent.currentPlayer === "red") {
-      this.gameBoardComponent.currentPlayer = "yellow";
+    else {
+      if (this.gameBoardComponent.currentPlayer === "yellow") {
+        this.gameBoardComponent.currentPlayer = "red";
+      }
+      else if (this.gameBoardComponent.currentPlayer === "red") {
+        this.gameBoardComponent.currentPlayer = "yellow";
+      }
     }
   }
 
@@ -47,7 +47,7 @@ export class AddGamePiece implements State {
     }
   }
 
-  isFourInARow(): string {
+  checkWin(): string {
     return "do I call is four in a row from here?";
   }
 

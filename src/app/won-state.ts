@@ -10,8 +10,8 @@ export class WonState implements State {
     return "game over, cannot add anymore checkers";
   }
 
-  isFourInARow(): string {
-    return "game over";
+  checkWin(): string {
+    return "The winner is: " + this.gameBoardComponent.currentPlayer;
   }
 
   checkTie(): string {

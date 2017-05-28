@@ -102,15 +102,9 @@ describe('GameboardComponent', () => {
     expect(gameboardComponent.currentPlayer).toEqual("yellow");
   });
 
-  it('should check for winning player', () => {
-    let gameboardComponent: GameboardComponent = new GameboardComponent();
-    gameboardComponent.insertToken(0,5);
-    expect(gameboardComponent.winningPlayer).toEqual("none");
-  });
-
   it('should check for four in a row', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
-    expect(gameboardComponent.isFourInARow()).toBeFalsy();
+    expect(gameboardComponent.checkWin()).toBeFalsy();
   });
 
   it('should return true for four in a row horizontal', () => {
@@ -122,7 +116,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+    expect(gameboardComponent.checkWin()).toBeTruthy();
   });
 
   it('should return true for four in a row horizontal', () => {
@@ -134,7 +128,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+    expect(gameboardComponent.checkWin()).toBeTruthy();
   });
 
   it('should return false for four in a row horizontal', () => {
@@ -146,7 +140,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.isFourInARow()).toBeFalsy();
+    expect(gameboardComponent.checkWin()).toBeFalsy();
   });
 
   it('should return true for four in a row vertical', () => {
@@ -158,7 +152,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "red", "red", "red", "red"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+    expect(gameboardComponent.checkWin()).toBeTruthy();
   });
 
   it('should return true for four in a row diagonal', () => {
@@ -170,7 +164,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+    expect(gameboardComponent.checkWin()).toBeTruthy();
   });
 
   it('should return true for four in a row diagonal bottom left to top right', () => {
@@ -182,7 +176,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "yellow", "open", "open"],
                                     ["open", "open", "open", "open", "yellow", "open"],
                                     ["open", "open", "open", "open", "open", "yellow"]];
-    expect(gameboardComponent.isFourInARow()).toBeTruthy();
+    expect(gameboardComponent.checkWin()).toBeTruthy();
   });
 
   it('should set state to WonState if four in a row', () => {
@@ -194,7 +188,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "yellow", "open", "open"],
                                     ["open", "open", "open", "open", "yellow", "open"],
                                     ["open", "open", "open", "open", "open", "yellow"]];
-    let result: boolean = gameboardComponent.isFourInARow();
+    let result: boolean = gameboardComponent.checkWin();
     expect(result).toEqual(true);
   });
 });

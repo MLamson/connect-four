@@ -1,64 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { GameboardComponent } from "./gameboard/gameboard.component";
 
-import { AddGamePiece } from "../add-game-piece";
-import { WonState } from "../won-state";
-
-@Component({
-  selector: 'app-game-board',
-  templateUrl: 'gameboard.component.html',
-  styleUrls: ['gameboard.component.css']
-})
-export class GameboardComponent {
-  addGamePiece: AddGamePiece;
-  wonState: WonState;
-  state: State;
-  currentPlayer: string;
-  winningPlayer: string;
-  gameboard: any;
-  initialGameboard: any = [["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"]];
-
-  constructor() {
-    this.addGamePiece = new AddGamePiece(this);
-    this.wonState = new WonState(this);
-    this.state = this.addGamePiece;
-    this.currentPlayer = "yellow";
-    this.gameboard = this.initialGameboard.slice();
-  }
-
-   resetBoard(): void {
-    this.gameboard = [["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"]];  
-    this.addGamePiece = new AddGamePiece(this);
-    this.wonState = new WonState(this);
-    this.state = this.addGamePiece;
-    this.currentPlayer = "yellow";
-  }
-
-  insertToken(column: number, row: number) {
-    if (this.gameboard[column][row] === "open") {
-      this.state.insertToken(column, row);
-      if (this.state === this.wonState) {
-      this.winningPlayer = this.state.checkWin();
-      }
-    } 
-  }
-
-  getWonState() {
-    return this.wonState;
-  }
-
-  checkWin(): boolean {
+export class CheckWin {
+    gameboard: any;
+    constructor(gameboardComponent: GameboardComponent) {
+        this.gameboard = gameboardComponent.gameboard;
+    }
+     checkWin(): boolean {
     for (let column: number = 0; column <= 3; column++) {
       for (let row: number = 0; row <= 5; row++) {
         if (this.checkFourInARowHorizontal(column, row)) {

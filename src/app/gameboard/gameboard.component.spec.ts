@@ -4,8 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { GameboardComponent } from './gameboard.component';
-import {NoTokenState} from "../no-token-state";
-import {addGamePiece} from "../add-game-piece";
+import {AddGamePiece} from "../add-game-piece";
 import {WonState} from "../won-state";
 
 describe('GameboardComponent', () => {

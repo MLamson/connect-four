@@ -12,9 +12,16 @@ export class GameboardComponent implements OnInit {
   addGamePiece: AddGamePiece;
   wonState: WonState;
   state: State;
-  gameboard: any;
   currentPlayer: string;
   winningPlayer: string;
+  gameboard: any;
+  initialGameboard: any = [["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"]];
 
   constructor() {
     this.addGamePiece = new AddGamePiece(this);
@@ -22,13 +29,7 @@ export class GameboardComponent implements OnInit {
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
 
-    this.gameboard = [["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"]];
+    this.gameboard = this.initialGameboard.concat();
   }
 
   ngOnInit() {
@@ -46,13 +47,7 @@ export class GameboardComponent implements OnInit {
 
   resetBoard(): void {
     this.currentPlayer = "yellow";
-    this.gameboard = [["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"]];
+    this.gameboard = this.initialGameboard.concat();
     this.state = this.addGamePiece;
   }
 
@@ -65,7 +60,6 @@ export class GameboardComponent implements OnInit {
     for (let column: number = 0; column <= 3; column++) {
       for (let row: number = 0; row <= 5; row++) {
         if (this.checkFourInARowHorizontal(column, row)) {
-          console.log("winner Hori");
           return true;
         }
       }
@@ -74,7 +68,6 @@ export class GameboardComponent implements OnInit {
     for (let row: number = 0; row <= 3; row++) {
       for (let column: number = 0; column <= 6; column++) {
         if (this.checkForInARowVertical(column, row)) {
-          console.log("Winner Vert");
           return true;
         }
       }
@@ -83,7 +76,6 @@ export class GameboardComponent implements OnInit {
     for (let column: number = 0; column <= 3; column++) {
       for (let row: number = 5; row >= 0; row--) {
         if (this.checkFourInARowDiagonalStartBottomRight(column, row)) {
-          console.log("winner Diag for loop");
           return true;
         }
       }
@@ -92,7 +84,6 @@ export class GameboardComponent implements OnInit {
     for (let column: number = 6; column >= 3; column--) {
       for (let row: number = 5; row >= 0; row--) {
         if (this.checkFourInARowStartBottomLeft(column, row)) {
-          console.log("winner Diag for loop");
           return true;
         }
       }

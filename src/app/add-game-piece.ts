@@ -1,10 +1,29 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
 export class AddGamePiece implements State {
   gameBoardComponent: GameboardComponent;
+
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
   }
+
   insertToken(column: number, row: number) {
+
+    this.lowestOpenSpace(column, row);
+
+    if (this.gameBoardComponent.isFourInARow()) {
+      this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
+    }
+    this.gameBoardComponent.checkForWinner();
+
+    if (this.gameBoardComponent.currentPlayer === "yellow") {
+      this.gameBoardComponent.currentPlayer = "red";
+    }
+    else if (this.gameBoardComponent.currentPlayer === "red") {
+      this.gameBoardComponent.currentPlayer = "yellow";
+    }
+  }
+
+  lowestOpenSpace(column: number, row: number): void {
 
     if (this.gameBoardComponent.gameboard[column][row] === 'open') {
       if (this.gameBoardComponent.gameboard[column][1] !== 'open') {
@@ -26,19 +45,8 @@ export class AddGamePiece implements State {
         this.gameBoardComponent.gameboard[column].splice(5, 1, this.gameBoardComponent.currentPlayer);
       }
     }
-
-    if (this.gameBoardComponent.isFourInARow()) {
-      this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
-    }
-    this.gameBoardComponent.checkForWinner();
-
-    if (this.gameBoardComponent.currentPlayer === "yellow") {
-      this.gameBoardComponent.currentPlayer = "red";
-    }
-    else if (this.gameBoardComponent.currentPlayer === "red") {
-      this.gameBoardComponent.currentPlayer = "yellow";
-    }
   }
+
   isFourInARow(): string {
     return "do I call is four in a row from here?";
   }

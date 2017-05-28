@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AddGamePiece } from "../add-game-piece";
+import { AddPieceState } from "../add-piece-state";
 import { WonState } from "../won-state";
+import { CheckWin } from "../check-win";
 
 @Component({
   selector: 'app-game-board',
@@ -9,12 +10,13 @@ import { WonState } from "../won-state";
   styleUrls: ['gameboard.component.css']
 })
 export class GameboardComponent {
-  addGamePiece: AddGamePiece;
+  addGamePiece: AddPieceState;
   wonState: WonState;
   state: State;
   currentPlayer: string;
   winningPlayer: string;
   gameboard: any;
+  checkWinner: any;
   initialGameboard: any = [["open", "open", "open", "open", "open", "open"],
                           ["open", "open", "open", "open", "open", "open"],
                           ["open", "open", "open", "open", "open", "open"],
@@ -24,8 +26,9 @@ export class GameboardComponent {
                           ["open", "open", "open", "open", "open", "open"]];
 
   constructor() {
-    this.addGamePiece = new AddGamePiece(this);
+    this.addGamePiece = new AddPieceState(this);
     this.wonState = new WonState(this);
+    this.checkWinner = new CheckWin(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
     this.gameboard = this.initialGameboard.slice();
@@ -39,7 +42,7 @@ export class GameboardComponent {
                       ["open", "open", "open", "open", "open", "open"],
                       ["open", "open", "open", "open", "open", "open"],
                       ["open", "open", "open", "open", "open", "open"]];  
-    this.addGamePiece = new AddGamePiece(this);
+    this.addGamePiece = new AddPieceState(this);
     this.wonState = new WonState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";

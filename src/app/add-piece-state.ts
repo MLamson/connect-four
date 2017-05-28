@@ -1,5 +1,6 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
-export class AddGamePiece implements State {
+
+export class AddPieceState implements State {
   gameBoardComponent: GameboardComponent;
 
   constructor(gameBoardComponent: GameboardComponent) {

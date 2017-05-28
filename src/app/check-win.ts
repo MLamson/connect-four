@@ -1,9 +1,9 @@
 import { GameboardComponent } from "./gameboard/gameboard.component";
 
 export class CheckWin {
-    gameboard: any;
+    GameboardComponent: GameboardComponent;
     constructor(gameboardComponent: GameboardComponent) {
-        this.gameboard = gameboardComponent.gameboard;
+        this.GameboardComponent = gameboardComponent;
     }
      checkWin(): boolean {
     for (let column: number = 0; column <= 3; column++) {
@@ -41,30 +41,30 @@ export class CheckWin {
   }
 
   private checkFourInARowStartBottomLeft(column: number, row: number) {
-    return this.gameboard[column][row] === this.gameboard[column - 1][row - 1]
-      && this.gameboard[column - 1][row - 1] === this.gameboard[column - 2][row - 2]
-      && this.gameboard[column - 2][row - 2] === this.gameboard[column - 3][row - 3]
-      && this.gameboard[column][row] !== "open";
+    return this.GameboardComponent.gameboard[column][row] === this.GameboardComponent.gameboard[column - 1][row - 1]
+      && this.GameboardComponent.gameboard[column - 1][row - 1] === this.GameboardComponent.gameboard[column - 2][row - 2]
+      && this.GameboardComponent.gameboard[column - 2][row - 2] === this.GameboardComponent.gameboard[column - 3][row - 3]
+      && this.GameboardComponent.gameboard[column][row] !== "open";
   }
 
   private checkFourInARowDiagonalStartBottomRight(column: number, row: number) {
-    return this.gameboard[column][row] === this.gameboard[column + 1][row - 1]
-      && this.gameboard[column + 1][row - 1] === this.gameboard[column + 2][row - 2]
-      && this.gameboard[column + 2][row - 2] === this.gameboard[column + 3][row - 3]
-      && this.gameboard[column][row] !== "open";
+    return this.GameboardComponent.gameboard[column][row] === this.GameboardComponent.gameboard[column + 1][row - 1]
+      && this.GameboardComponent.gameboard[column + 1][row - 1] === this.GameboardComponent.gameboard[column + 2][row - 2]
+      && this.GameboardComponent.gameboard[column + 2][row - 2] === this.GameboardComponent.gameboard[column + 3][row - 3]
+      && this.GameboardComponent.gameboard[column][row] !== "open";
   }
 
   private checkForInARowVertical(column: number, row: number) {
-    return this.gameboard[column][row] === this.gameboard[column][row + 1]
-      && this.gameboard[column][row + 1] === this.gameboard[column][row + 2]
-      && this.gameboard[column][row + 2] === this.gameboard[column][row + 3]
-      && this.gameboard[column][row] !== "open";
+    return this.GameboardComponent.gameboard[column][row] === this.GameboardComponent.gameboard[column][row + 1]
+      && this.GameboardComponent.gameboard[column][row + 1] === this.GameboardComponent.gameboard[column][row + 2]
+      && this.GameboardComponent.gameboard[column][row + 2] === this.GameboardComponent.gameboard[column][row + 3]
+      && this.GameboardComponent.gameboard[column][row] !== "open";
   }
 
   private checkFourInARowHorizontal(column: number, row: number) {
-    return this.gameboard[column][row] === this.gameboard[column + 1][row]
-      && this.gameboard[column + 1][row] === this.gameboard[column + 2][row]
-      && this.gameboard[column + 2][row] === this.gameboard[column + 3][row]
-      && this.gameboard[column][row] !== "open";
+    return this.GameboardComponent.gameboard[column][row] === this.GameboardComponent.gameboard[column + 1][row]
+      && this.GameboardComponent.gameboard[column + 1][row] === this.GameboardComponent.gameboard[column + 2][row]
+      && this.GameboardComponent.gameboard[column + 2][row] === this.GameboardComponent.gameboard[column + 3][row]
+      && this.GameboardComponent.gameboard[column][row] !== "open";
   }
 }

@@ -4,8 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { GameboardComponent } from './gameboard.component';
-import {AddGamePiece} from "../add-game-piece";
+import {AddPieceState} from "../add-piece-state";
 import {WonState} from "../won-state";
+import {CheckWin} from "../check-win";
 
 describe('GameboardComponent', () => {
   let component: GameboardComponent;
@@ -104,11 +105,13 @@ describe('GameboardComponent', () => {
 
   it('should check for four in a row', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
-    expect(gameboardComponent.checkWin()).toBeFalsy();
+    let checkWinner: CheckWin = new CheckWin();
+    expect(checkWinner.checkWin(gameboardComponent)).toBeFalsy();
   });
 
   it('should return true for four in a row horizontal', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let checkWinner: CheckWin = new CheckWin();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "yellow"],
                                     ["open", "open", "open", "open", "open", "yellow"],
                                     ["open", "open", "open", "open", "open", "yellow"],
@@ -116,11 +119,12 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.checkWin()).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
   });
 
   it('should return true for four in a row horizontal', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let checkWinner: CheckWin = new CheckWin();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "red"],
@@ -128,11 +132,12 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.checkWin()).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
   });
 
   it('should return false for four in a row horizontal', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let checkWinner: CheckWin = new CheckWin();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "red"],
@@ -140,11 +145,12 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.checkWin()).toBeFalsy();
+    expect(checkWinner.checkWin(gameboardComponent)).toBeFalsy();
   });
 
   it('should return true for four in a row vertical', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let checkWinner: CheckWin = new CheckWin();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
@@ -152,11 +158,12 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "red", "red", "red", "red"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.checkWin()).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
   });
 
   it('should return true for four in a row diagonal', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let checkWinner: CheckWin = new CheckWin();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "red"],
                                     ["open", "open", "open", "open", "red", "open"],
                                     ["open", "open", "open", "red", "open", "open"],
@@ -164,11 +171,12 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"]];
-    expect(gameboardComponent.checkWin()).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
   });
 
   it('should return true for four in a row diagonal bottom left to top right', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let checkWinner: CheckWin = new CheckWin();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
@@ -176,11 +184,12 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "yellow", "open", "open"],
                                     ["open", "open", "open", "open", "yellow", "open"],
                                     ["open", "open", "open", "open", "open", "yellow"]];
-    expect(gameboardComponent.checkWin()).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
   });
 
   it('should set state to WonState if four in a row', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let checkWinner: CheckWin = new CheckWin();
     gameboardComponent.gameboard = [["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
                                     ["open", "open", "open", "open", "open", "open"],
@@ -188,7 +197,7 @@ describe('GameboardComponent', () => {
                                     ["open", "open", "open", "yellow", "open", "open"],
                                     ["open", "open", "open", "open", "yellow", "open"],
                                     ["open", "open", "open", "open", "open", "yellow"]];
-    let result: boolean = gameboardComponent.checkWin();
+    let result: boolean = checkWinner.checkWin(gameboardComponent);
     expect(result).toEqual(true);
   });
 });

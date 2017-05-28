@@ -1,7 +1,8 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
-
+import { CheckWin } from "./check-win";
 export class AddPieceState implements State {
   gameBoardComponent: GameboardComponent;
+  checkWinner: CheckWin = new CheckWin();
 
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
@@ -11,7 +12,11 @@ export class AddPieceState implements State {
 
     this.lowestOpenSpace(column, row);
 
-    if (this.gameBoardComponent.checkWin()) {
+    if (this.checkWinner.checkWin(this.gameBoardComponent)) {
+      console.log("checkwin on CheckWin class");
+    }
+
+    if (this.checkWinner.checkWin(this.gameBoardComponent)) {
       this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
     }
     else {

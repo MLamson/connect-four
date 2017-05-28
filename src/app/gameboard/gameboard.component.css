@@ -3,7 +3,7 @@
 }
 
 .piece-position {
-  border: 2px solid black;
+  border: 2px solid blue;
   padding: 10px;
   height: 40px;
   width: 40px;
@@ -14,7 +14,7 @@
 .board-flex {
   display: flex;
   flex-direction: row;
-  border: 2px solid black;
+  border: 20px solid blue;
 }
 
 .flex-row {

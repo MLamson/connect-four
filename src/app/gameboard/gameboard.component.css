@@ -1,5 +1,7 @@
 .game-container {
   display: flex;
+  flex-direction: column;
+  width: 488px;
 }
 
 .piece-position {
@@ -15,6 +17,7 @@
   display: flex;
   flex-direction: row;
   border: 20px solid blue;
+  justify-content: center;
 }
 
 .flex-row {

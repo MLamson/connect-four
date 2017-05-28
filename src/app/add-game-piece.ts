@@ -6,11 +6,6 @@ export class AddGamePiece implements State {
   }
   insertToken(column: number, row: number) {
 
-    if (this.gameBoardComponent.gameboard[column][row] === "open") {
-      // this.state.insertToken(column, row);
-
-    }
-
     if (this.gameBoardComponent.gameboard[column][row] === 'open') {
       if (this.gameBoardComponent.gameboard[column][1] !== 'open') {
         this.gameBoardComponent.gameboard[column].splice(0, 1, this.gameBoardComponent.currentPlayer);

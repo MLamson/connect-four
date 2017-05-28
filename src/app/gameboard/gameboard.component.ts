@@ -8,7 +8,7 @@ import { WonState } from "../won-state";
   templateUrl: 'gameboard.component.html',
   styleUrls: ['gameboard.component.css']
 })
-export class GameboardComponent implements OnInit {
+export class GameboardComponent {
   addGamePiece: AddGamePiece;
   wonState: WonState;
   state: State;
@@ -16,23 +16,33 @@ export class GameboardComponent implements OnInit {
   winningPlayer: string;
   gameboard: any;
   initialGameboard: any = [["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"]];
+                          ["open", "open", "open", "open", "open", "open"],
+                          ["open", "open", "open", "open", "open", "open"],
+                          ["open", "open", "open", "open", "open", "open"],
+                          ["open", "open", "open", "open", "open", "open"],
+                          ["open", "open", "open", "open", "open", "open"],
+                          ["open", "open", "open", "open", "open", "open"]];
 
   constructor() {
     this.addGamePiece = new AddGamePiece(this);
     this.wonState = new WonState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
-
-    this.gameboard = this.initialGameboard.concat();
+    this.gameboard = this.initialGameboard.slice();
   }
 
-  ngOnInit() {
+   resetBoard(): void {
+    this.gameboard = [["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"],
+                      ["open", "open", "open", "open", "open", "open"]];  
+    this.addGamePiece = new AddGamePiece(this);
+    this.wonState = new WonState(this);
+    this.state = this.addGamePiece;
+    this.currentPlayer = "yellow";
   }
 
   insertToken(column: number, row: number) {
@@ -43,12 +53,6 @@ export class GameboardComponent implements OnInit {
 
   getWonState() {
     return this.wonState;
-  }
-
-  resetBoard(): void {
-    this.currentPlayer = "yellow";
-    this.gameboard = this.initialGameboard.concat();
-    this.state = this.addGamePiece;
   }
 
   checkForWinner(): string {

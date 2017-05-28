@@ -110,7 +110,6 @@ describe('GameboardComponent', () => {
 
   it('should check for four in a row', () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
-    console.log(gameboardComponent.gameboard);
     expect(gameboardComponent.isFourInARow()).toBeFalsy();
   });
 

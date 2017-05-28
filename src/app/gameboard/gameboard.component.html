@@ -1,8 +1,9 @@
-<div class="current-player" [class.red-player]="currentPlayer === 'red'"
-     [class.yellow-player]="currentPlayer === 'yellow'">Current Player is: {{ currentPlayer }}
-</div>
+
 
 <div class="game-container">
+  <div class="current-player" [class.red-player]="currentPlayer === 'red'"
+     [class.yellow-player]="currentPlayer === 'yellow'">Current Player is: {{ currentPlayer }}
+  </div>
   <div class="board-flex">
     <div *ngFor="let position of gameboard; let column = index">
       <div *ngFor="let rows of position; let row = index" class="flex-row">

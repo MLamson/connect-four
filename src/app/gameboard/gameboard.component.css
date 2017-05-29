@@ -6,6 +6,8 @@
 
 .piece-position {
   border: 2px solid blue;
+  background-color: white;
+  border-radius: 45px;
   padding: 10px;
   height: 40px;
   width: 40px;
@@ -13,7 +15,12 @@
   cursor: pointer;
 }
 
+.piece-position:hover {
+  background-color: lightblue;
+}
+
 .board-flex {
+  background-color: blue;
   display: flex;
   flex-direction: row;
   border: 20px solid blue;
@@ -26,8 +33,10 @@
 
 .red-player {
   background-color: red;
+  pointer-events: none;
 }
 
 .yellow-player {
   background-color: yellow;
+  pointer-events: none;  
 }

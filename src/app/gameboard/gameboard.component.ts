@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AddPieceState } from "../add-piece-state";
 import { WonState } from "../won-state";
-import { CheckWin } from "../check-win";
 
 @Component({
   selector: 'app-game-board',
@@ -14,7 +13,7 @@ export class GameboardComponent {
   wonState: WonState;
   state: State;
   currentPlayer: string;
-  winningPlayer: string;
+  winningPlayer: string = "";
   gameboard: any;
   checkWinner: any;
   initialGameboard: any = [["open", "open", "open", "open", "open", "open"],
@@ -28,7 +27,6 @@ export class GameboardComponent {
   constructor() {
     this.addGamePiece = new AddPieceState(this);
     this.wonState = new WonState(this);
-    this.checkWinner = new CheckWin(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
     this.gameboard = this.initialGameboard.slice();
@@ -46,6 +44,7 @@ export class GameboardComponent {
     this.wonState = new WonState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
+    this.winningPlayer = "";
   }
 
   insertToken(column: number, row: number) {
@@ -53,6 +52,7 @@ export class GameboardComponent {
       this.state.insertToken(column, row);
       if (this.state === this.wonState) {
       this.winningPlayer = this.state.checkWin();
+      console.log(this.winningPlayer);
       }
     } 
   }

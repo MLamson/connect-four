@@ -31,6 +31,13 @@
   display: flex;
 }
 
+.current-player {
+  height: 75px;
+  text-align: center;
+  font-size: 40px;
+  line-height: 75px;
+}
+
 .red-player {
   background-color: red;
   pointer-events: none;

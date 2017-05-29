@@ -1,7 +1,19 @@
+
+.main-container {
+  width: 100%;
+}
+
 .game-container {
   display: flex;
   flex-direction: column;
   width: 488px;
+  margin: 45px auto;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
 }
 
 .piece-position {
@@ -47,3 +59,4 @@
   background-color: yellow;
   pointer-events: none;  
 }
+

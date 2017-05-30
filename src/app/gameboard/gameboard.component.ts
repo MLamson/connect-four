@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AddPieceState } from "../add-piece-state";
+import { PlacePieceState } from "../place-piece-state";
 import { WonState } from "../won-state";
 
 @Component({
@@ -9,7 +9,7 @@ import { WonState } from "../won-state";
   styleUrls: ['gameboard.component.css']
 })
 export class GameboardComponent {
-  addGamePiece: AddPieceState;
+  addGamePiece: PlacePieceState;
   wonState: WonState;
   state: State;
   currentPlayer: string;
@@ -25,7 +25,7 @@ export class GameboardComponent {
                           ["open", "open", "open", "open", "open", "open"]];
 
   constructor() {
-    this.addGamePiece = new AddPieceState(this);
+    this.addGamePiece = new PlacePieceState(this);
     this.wonState = new WonState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
@@ -40,7 +40,7 @@ export class GameboardComponent {
                       ["open", "open", "open", "open", "open", "open"],
                       ["open", "open", "open", "open", "open", "open"],
                       ["open", "open", "open", "open", "open", "open"]];  
-    this.addGamePiece = new AddPieceState(this);
+    this.addGamePiece = new PlacePieceState(this);
     this.wonState = new WonState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";

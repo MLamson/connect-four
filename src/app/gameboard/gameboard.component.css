@@ -1,5 +1,6 @@
 
 .main-container {
+  background-color: lightgray;
   width: 100%;
 }
 
@@ -8,6 +9,7 @@
   flex-direction: column;
   width: 488px;
   margin: 45px auto;
+  padding-top: 45px;
 }
 
 .button-container {
@@ -18,7 +20,7 @@
 
 .piece-position {
   border: 2px solid blue;
-  background-color: white;
+  background-color: #eeeeee;
   border-radius: 45px;
   padding: 10px;
   height: 40px;

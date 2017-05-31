@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { PlacePieceState } from "../place-piece-state";
 import { WonState } from "../won-state";
+import { TieState } from "../tie-state";
 
 @Component({
   selector: 'app-game-board',
@@ -11,6 +12,7 @@ import { WonState } from "../won-state";
 export class GameboardComponent {
   addGamePiece: PlacePieceState;
   wonState: WonState;
+  tieState: TieState;
   state: State;
   currentPlayer: string;
   winningPlayer: string = "";
@@ -27,6 +29,7 @@ export class GameboardComponent {
   constructor() {
     this.addGamePiece = new PlacePieceState(this);
     this.wonState = new WonState(this);
+    this.tieState = new TieState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
     this.gameboard = this.initialGameboard.slice();
@@ -42,6 +45,7 @@ export class GameboardComponent {
                       ["open", "open", "open", "open", "open", "open"]];  
     this.addGamePiece = new PlacePieceState(this);
     this.wonState = new WonState(this);
+    this.tieState = new TieState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";
     this.winningPlayer = "";
@@ -51,13 +55,23 @@ export class GameboardComponent {
     if (this.gameboard[column][row] === "open") {
       this.state.insertToken(column, row);
       if (this.state === this.wonState) {
-      this.winningPlayer = this.state.checkWin();
-      console.log(this.winningPlayer);
-      }
+        this.winningPlayer = this.state.checkWin();
+      }   
     } 
+    if (this.state === this.tieState) {
+        console.log(this.state.checkTie());
+        console.log(this.state);
+        console.log("else if");
+        this.winningPlayer = this.state.checkTie();
+        console.log(this.winningPlayer = this.state.checkTie());
+      }
   }
 
   getWonState() {
     return this.wonState;
+  }
+
+  getTieState() {
+    return this.tieState;
   }
 }

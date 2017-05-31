@@ -13,4 +13,8 @@ export class TieState implements State {
   checkWin(): string {
     return "Draw: no one wins";
   }
+
+  checkTie(): boolean {
+    return true;
+  }
 }

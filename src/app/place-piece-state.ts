@@ -12,9 +12,9 @@ export class PlacePieceState implements State {
 
     this.lowestOpenSpace(column, row);
 
-    //check for tie here
+   
 
-    if (this.checkWinner.checkWin(this.gameBoardComponent)) {
+    if (this.checkWin()) {
       this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
     }
     else {
@@ -24,6 +24,10 @@ export class PlacePieceState implements State {
       else if (this.gameBoardComponent.currentPlayer === "red") {
         this.gameBoardComponent.currentPlayer = "yellow";
       }
+    }
+     if (this.checkTie()) {
+      console.log("TIE");
+      this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
     }
   }
 
@@ -51,7 +55,24 @@ export class PlacePieceState implements State {
     }
   }
 
-  checkWin(): string {
-    return "do I call is four in a row from here?";
+  checkWin(): boolean {
+    return this.checkWinner.checkWin(this.gameBoardComponent);
+  }
+  
+  checkTie(): any {
+    let numberOfOpenSpaces: number = 0;
+    for (let i: number = 0; i < 6; i++) {
+      for (let j: number = 0; i < 7; i++) {
+        if (this.gameBoardComponent.gameboard[i][j] === "open") {
+          console.log(numberOfOpenSpaces);
+          numberOfOpenSpaces++;
+        }
+      }
+    }
+    if (numberOfOpenSpaces > 0) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

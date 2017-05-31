@@ -200,4 +200,17 @@ describe('GameboardComponent', () => {
     let result: boolean = checkWinner.checkWin(gameboardComponent);
     expect(result).toEqual(true);
   });
+
+  it('should set state to tieState when all spaces are filled and no one has won', () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    gameboardComponent.gameboard = [["yellow", "yellow", "yellow", "red", "red", "red"],
+                                    ["red", "red", "red", "yellow", "yellow", "yellow"],
+                                    ["yellow", "yellow", "yellow", "red", "red", "red"],
+                                    ["red", "red", "red", "yellow", "yellow", "yellow"],
+                                    ["yellow", "yellow", "yellow", "red", "red", "red"],
+                                    ["red", "red", "red", "yellow", "yellow", "yellow"],
+                                    ["yellow", "yellow", "yellow", "red", "red", "red"]];
+    let result: boolean = gameboardComponent.state.checkTie();
+    expect(result).toEqual(true);
+  });
 });

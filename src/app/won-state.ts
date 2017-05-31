@@ -13,4 +13,8 @@ export class WonState implements State {
   checkWin(): string {
     return "The winner is: " + this.gameBoardComponent.currentPlayer;
   }
+
+  checkTie(): string {
+    return "checkTie in won state should do nothing";
+  }
 }

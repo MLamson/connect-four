@@ -12,8 +12,6 @@ export class PlacePieceState implements State {
 
     this.lowestOpenSpace(column, row);
 
-   
-
     if (this.checkWin()) {
       this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
     }
@@ -26,7 +24,6 @@ export class PlacePieceState implements State {
       }
     }
      if (this.checkTie()) {
-      console.log("TIE");
       this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
     }
   }
@@ -64,7 +61,6 @@ export class PlacePieceState implements State {
     for (let i: number = 0; i < 6; i++) {
       for (let j: number = 0; i < 7; i++) {
         if (this.gameBoardComponent.gameboard[i][j] === "open") {
-          console.log(numberOfOpenSpaces);
           numberOfOpenSpaces++;
         }
       }

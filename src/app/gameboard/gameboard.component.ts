@@ -59,11 +59,7 @@ export class GameboardComponent {
       }   
     } 
     if (this.state === this.tieState) {
-        console.log(this.state.checkTie());
-        console.log(this.state);
-        console.log("else if");
         this.winningPlayer = this.state.checkTie();
-        console.log(this.winningPlayer = this.state.checkTie());
       }
   }
 

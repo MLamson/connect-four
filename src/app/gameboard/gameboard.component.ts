@@ -27,28 +27,20 @@ export class GameboardComponent {
                           ["open", "open", "open", "open", "open", "open"]];
 
   constructor() {
-    this.addGamePiece = new PlacePieceState(this);
-    this.wonState = new WonState(this);
-    this.tieState = new TieState(this);
-    this.state = this.addGamePiece;
-    this.currentPlayer = "yellow";
-    this.gameboard = this.initialGameboard.slice();
+   this.initialGameboardSettings();
   }
 
    resetBoard(): void {
-    this.gameboard = [["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"],
-                      ["open", "open", "open", "open", "open", "open"]];  
+    this.initialGameboardSettings();
+  }
+
+  initialGameboardSettings(): void {
     this.addGamePiece = new PlacePieceState(this);
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
     this.state = this.addGamePiece;
-    this.currentPlayer = "yellow";
-    this.winningPlayer = "";
+    this.currentPlayer = "yellow";    
+    this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }
 
   insertToken(column: number, row: number) {

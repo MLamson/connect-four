@@ -19,7 +19,7 @@
 }
 
 .piece-position {
-  border: 2px solid blue;
+  border: 2px solid #2159B0;
   background-color: #eeeeee;
   border-radius: 45px;
   padding: 10px;
@@ -34,10 +34,10 @@
 }
 
 .board-flex {
-  background-color: blue;
+  background-color: #2159B0;
   display: flex;
   flex-direction: row;
-  border: 20px solid blue;
+  border: 20px solid #2159B0;
   justify-content: center;
 }
 
@@ -53,12 +53,16 @@
 }
 
 .red-player {
-  background-color: red;
+  background-color: #BA1718;
   pointer-events: none;
 }
 
 .yellow-player {
-  background-color: yellow;
+  background-color: #F2C124;
   pointer-events: none;  
+}
+
+.winner {
+  background-color: green;
 }
 

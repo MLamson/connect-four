@@ -4,8 +4,7 @@
     <div *ngIf="winningPlayer === ''" class="current-player" [class.red-player]="currentPlayer === 'red'"
       [class.yellow-player]="currentPlayer === 'yellow'">Current Player is: {{ currentPlayer }}
     </div>
-    <div *ngIf="winningPlayer !== ''" class="current-player" [class.red-player]="currentPlayer === 'red'"
-      [class.yellow-player]="currentPlayer === 'yellow'">{{ winningPlayer }}
+    <div *ngIf="winningPlayer !== ''" class="current-player winner">{{ winningPlayer }}
     </div>
     <div class="board-flex">
       <div *ngFor="let position of gameboard; let column = index">

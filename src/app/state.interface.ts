@@ -1,5 +1,5 @@
 interface State {
-  insertToken(column: number, row: number);
+  placePiece(column: number, row: number);
   checkWin();
   checkTie();
 }

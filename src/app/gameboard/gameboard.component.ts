@@ -10,7 +10,7 @@ import { TieState } from "../tie-state";
   styleUrls: ['gameboard.component.css']
 })
 export class GameboardComponent {
-  addGamePiece: PlacePieceState;
+  placePieceState: PlacePieceState;
   wonState: WonState;
   tieState: TieState;
   state: State;
@@ -30,9 +30,9 @@ export class GameboardComponent {
    this.initialGameboardSettings();
   }
 
-   insertToken(column: number, row: number) {
+   placePiece(column: number, row: number) {
     if (this.gameboard[column][row] === "open") {
-      this.state.insertToken(column, row);
+      this.state.placePiece(column, row);
       if (this.state === this.wonState) {
         this.winningPlayer = this.state.checkWin();
       }   
@@ -47,10 +47,10 @@ export class GameboardComponent {
   }
 
   initialGameboardSettings(): void {
-    this.addGamePiece = new PlacePieceState(this);
+    this.placePieceState = new PlacePieceState(this);
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
-    this.state = this.addGamePiece;
+    this.state = this.placePieceState;
     this.currentPlayer = "yellow";    
     this.winningPlayer = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));

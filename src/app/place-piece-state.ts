@@ -8,7 +8,7 @@ export class PlacePieceState implements State {
     this.gameBoardComponent = gameBoardComponent;
   }
 
-  insertToken(column: number, row: number) {
+  placePiece(column: number, row: number) {
 
     this.lowestOpenSpace(column, row);
 

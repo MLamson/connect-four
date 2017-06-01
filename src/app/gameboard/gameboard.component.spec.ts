@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { GameboardComponent } from './gameboard.component';
-import {AddPieceState} from "../add-piece-state";
+import {PlacePieceState} from "../place-piece-state";
 import {WonState} from "../won-state";
 import {CheckWin} from "../check-win";
 
@@ -74,18 +74,18 @@ describe('GameboardComponent', () => {
 
   it('should update currentPlayer when in hasTokenState', () => {
     let gameBoardComponent: GameboardComponent = new GameboardComponent();
-    gameBoardComponent.insertToken(1, 1);
+    gameBoardComponent.placePiece(1, 1);
     expect(gameBoardComponent.currentPlayer).toEqual("red");
   });
 
   it('should update currentPlayer when insertToken is called multiple times', () => {
     let gameBoardComponent: GameboardComponent = new GameboardComponent();
-    gameBoardComponent.insertToken(0, 5);
-    gameBoardComponent.insertToken(0, 4);
-    gameBoardComponent.insertToken(0, 3);
-    gameBoardComponent.insertToken(0, 2);
-    gameBoardComponent.insertToken(0, 1);
-    gameBoardComponent.insertToken(0, 0);
+    gameBoardComponent.placePiece(0, 5);
+    gameBoardComponent.placePiece(0, 4);
+    gameBoardComponent.placePiece(0, 3);
+    gameBoardComponent.placePiece(0, 2);
+    gameBoardComponent.placePiece(0, 1);
+    gameBoardComponent.placePiece(0, 0);
     expect(gameBoardComponent.currentPlayer).toEqual("yellow");
   });
 
@@ -99,7 +99,7 @@ describe('GameboardComponent', () => {
                                 ["open", "open", "open", "open", "open", "open"],
                                 ["open", "open", "open", "open", "open", "open"]];
     gameboardComponent.gameboard = currentGameboard;
-    gameboardComponent.insertToken(0, 5);
+    gameboardComponent.placePiece(0, 5);
     expect(gameboardComponent.currentPlayer).toEqual("yellow");
   });
 

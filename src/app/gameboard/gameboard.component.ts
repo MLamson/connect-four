@@ -30,6 +30,18 @@ export class GameboardComponent {
    this.initialGameboardSettings();
   }
 
+   insertToken(column: number, row: number) {
+    if (this.gameboard[column][row] === "open") {
+      this.state.insertToken(column, row);
+      if (this.state === this.wonState) {
+        this.winningPlayer = this.state.checkWin();
+      }   
+    } 
+    if (this.state === this.tieState) {
+        this.winningPlayer = this.state.checkTie();
+      }
+  }
+
    resetBoard(): void {
     this.initialGameboardSettings();
   }
@@ -41,18 +53,6 @@ export class GameboardComponent {
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";    
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
-  }
-
-  insertToken(column: number, row: number) {
-    if (this.gameboard[column][row] === "open") {
-      this.state.insertToken(column, row);
-      if (this.state === this.wonState) {
-        this.winningPlayer = this.state.checkWin();
-      }   
-    } 
-    if (this.state === this.tieState) {
-        this.winningPlayer = this.state.checkTie();
-      }
   }
 
   getWonState() {

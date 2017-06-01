@@ -15,6 +15,6 @@ export class TieState implements State {
   }
 
   checkTie(): string {
-    return "Tie";
+    return "Draw: No one wins";
   }
 }

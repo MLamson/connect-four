@@ -52,6 +52,7 @@ export class GameboardComponent {
     this.tieState = new TieState(this);
     this.state = this.addGamePiece;
     this.currentPlayer = "yellow";    
+    this.winningPlayer = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }
 

@@ -10,7 +10,7 @@
     <div class="board-flex">
       <div *ngFor="let position of gameboard; let column = index">
         <div *ngFor="let rows of position; let row = index" class="flex-row">
-          <div (click)="insertToken(column, row)" class="piece-position" [class.red-player]="position[row] === 'red'"
+          <div (click)="placePiece(column, row)" class="piece-position" [class.red-player]="position[row] === 'red'"
               [class.yellow-player]="position[row] === 'yellow'">
           </div>
         </div>

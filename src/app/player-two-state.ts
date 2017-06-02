@@ -1,5 +1,12 @@
-import { Player } from './player';
+import { Player } from './player-state';
+import { GameboardComponent } from './gameboard/gameboard.component';
 
-export class PlayerTwoState extends Player implements State {
+export class PlayerTwoState extends Player {
+    
+    gameBoardComponent: GameboardComponent;
 
+    constructor(gameBoardComponent: GameboardComponent) {
+        super();
+        this.gameBoardComponent = gameBoardComponent;
+    }
 }

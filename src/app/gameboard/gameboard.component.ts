@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlacePieceState } from "../place-piece-state";
 import { WonState } from "../won-state";
 import { TieState } from "../tie-state";
+import { PlayerOneState } from "../player-one-state";
+import { PlayerTwoState } from "../player-two-state";
 
 @Component({
   selector: 'app-game-board',
@@ -10,6 +12,8 @@ import { TieState } from "../tie-state";
   styleUrls: ['gameboard.component.css']
 })
 export class GameboardComponent {
+  playerOneState: PlayerOneState;
+  playerTwoState: PlayerTwoState;
   placePieceState: PlacePieceState;
   wonState: WonState;
   tieState: TieState;
@@ -47,6 +51,8 @@ export class GameboardComponent {
   }
 
   initialGameboardSettings(): void {
+    this.playerOneState = new PlayerOneState(this);
+    this.playerTwoState = new PlayerTwoState(this);
     this.placePieceState = new PlacePieceState(this);
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);

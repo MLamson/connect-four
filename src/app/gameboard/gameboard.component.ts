@@ -32,6 +32,7 @@ export class GameboardComponent {
   }
 
    placePiece(column: number, row: number) {
+     this.currentPlayer = this.state.currentPlayer;
     if (this.gameboard[column][row] === "open") {
       this.state.placePiece(column, row);
       if (this.state === this.wonState) {
@@ -55,7 +56,6 @@ export class GameboardComponent {
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
     this.state = this.playerOneState;
-    this.currentPlayer = "yellow";    
     this.winningPlayer = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }

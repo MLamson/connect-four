@@ -1,16 +1,16 @@
 
 <div class="main-container">
   <div class="game-container">
-    <div *ngIf="winningPlayer === ''" class="current-player" [class.red-player]="currentPlayer === 'red'"
-      [class.yellow-player]="currentPlayer === 'yellow'">Current Player is: {{ currentPlayer }}
+    <div *ngIf="winningPlayer === ''" class="current-player" [class.red-player]="currentPlayer === 'Player Two'"
+      [class.yellow-player]="currentPlayer === 'Player One'">Current Player is: {{ currentPlayer }}
     </div>
     <div *ngIf="winningPlayer !== ''" class="current-player winner">{{ winningPlayer }}
     </div>
     <div class="board-flex">
       <div *ngFor="let position of gameboard; let column = index">
         <div *ngFor="let rows of position; let row = index" class="flex-row">
-          <div (click)="placePiece(column, row)" class="piece-position" [class.red-player]="position[row] === 'red'"
-              [class.yellow-player]="position[row] === 'yellow'">
+          <div (click)="placePiece(column, row)" class="piece-position" [class.red-player]="position[row] === 'Player Two'"
+              [class.yellow-player]="position[row] === 'Player One'">
           </div>
         </div>
       </div>

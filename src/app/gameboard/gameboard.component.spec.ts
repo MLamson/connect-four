@@ -86,7 +86,7 @@ describe('GameboardComponent', () => {
     gameBoardComponent.placePiece(0, 2);
     gameBoardComponent.placePiece(0, 1);
     gameBoardComponent.placePiece(0, 0);
-    expect(gameBoardComponent.currentPlayer).toEqual("yellow");
+    expect(gameBoardComponent.state.currentPlayer).toEqual("Player One");
   });
 
   it('should not register click if clicking on a space already having a token', () => {
@@ -100,7 +100,7 @@ describe('GameboardComponent', () => {
                                 ["open", "open", "open", "open", "open", "open"]];
     gameboardComponent.gameboard = currentGameboard;
     gameboardComponent.placePiece(0, 5);
-    expect(gameboardComponent.currentPlayer).toEqual("yellow");
+    expect(gameboardComponent.state.currentPlayer).toEqual("Player One");
   });
 
   it('should check for four in a row', () => {

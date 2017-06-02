@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { WonState } from "../won-state";
 import { TieState } from "../tie-state";
 import { PlayerOneState } from "../player-one-state";
@@ -67,5 +66,13 @@ export class GameboardComponent {
 
   getTieState() {
     return this.tieState;
+  }
+
+  getPlayerTwoState(): State {
+    return this.playerTwoState;
+  }
+
+   getPlayerOneState(): State {
+    return this.playerOneState;
   }
 }

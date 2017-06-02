@@ -69,13 +69,13 @@ describe('GameboardComponent', () => {
 
   it('should create GameBoard with currentPlayer set', () => {
     let gameBoardComponent: GameboardComponent = new GameboardComponent();
-    expect(gameBoardComponent.currentPlayer).toEqual("yellow");
+    expect(gameBoardComponent.state.currentPlayer).toEqual("Player One");
   });
 
   it('should update currentPlayer when in hasTokenState', () => {
     let gameBoardComponent: GameboardComponent = new GameboardComponent();
     gameBoardComponent.placePiece(1, 1);
-    expect(gameBoardComponent.currentPlayer).toEqual("red");
+    expect(gameBoardComponent.state.currentPlayer).toEqual("Player Two");
   });
 
   it('should update currentPlayer when insertToken is called multiple times', () => {

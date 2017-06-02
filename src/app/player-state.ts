@@ -20,16 +20,17 @@ export abstract class Player implements State{
       this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
     }
     else {
-      if (this.gameBoardComponent.currentPlayer === "yellow") {
-        this.gameBoardComponent.currentPlayer = "red";
+      if (this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState()) {
+          this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState();
       }
-      else if (this.gameBoardComponent.currentPlayer === "red") {
-        this.gameBoardComponent.currentPlayer = "yellow";
+      else if (this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState()) {
+          this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
       }
     }
      if (this.checkTie()) {
       this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
     }
+      this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState();    
   }
   lowestOpenSpace(column: number, row: number): void {
 

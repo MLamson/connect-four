@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PlacePieceState } from "../place-piece-state";
 import { WonState } from "../won-state";
 import { TieState } from "../tie-state";
 import { PlayerOneState } from "../player-one-state";
@@ -14,7 +13,6 @@ import { PlayerTwoState } from "../player-two-state";
 export class GameboardComponent {
   playerOneState: PlayerOneState;
   playerTwoState: PlayerTwoState;
-  placePieceState: PlacePieceState;
   wonState: WonState;
   tieState: TieState;
   state: State;
@@ -47,16 +45,17 @@ export class GameboardComponent {
   }
 
    resetBoard(): void {
-    this.initialGameboardSettings();
+     this.playerOneState.resetGame();
+     this.playerTwoState.resetGame();
+     this.initialGameboardSettings();
   }
 
   initialGameboardSettings(): void {
     this.playerOneState = new PlayerOneState(this);
     this.playerTwoState = new PlayerTwoState(this);
-    this.placePieceState = new PlacePieceState(this);
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
-    this.state = this.placePieceState;
+    this.state = this.playerOneState;
     this.currentPlayer = "yellow";    
     this.winningPlayer = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));

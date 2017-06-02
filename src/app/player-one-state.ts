@@ -9,5 +9,4 @@ export class PlayerOneState extends Player {
         super();
         this.gameBoardComponent = gameBoardComponent;
     }
-
 }

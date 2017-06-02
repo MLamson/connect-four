@@ -1,4 +1,4 @@
-export abstract class Player implements State{
+export abstract class Player {
     resetGame(): void {
 
     }

@@ -2,6 +2,7 @@ import {GameboardComponent} from "./gameboard/gameboard.component";
 import { CheckWin } from "./check-win";
 
 export abstract class Player implements State{
+    currentPlayer: string;
     gameBoardComponent: GameboardComponent;
     checkWinner: CheckWin = new CheckWin();
 

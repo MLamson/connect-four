@@ -7,7 +7,7 @@ export class PlayerOneState extends Player {
     currentPlayer: string = "Player One";
 
     constructor(gameBoardComponent: GameboardComponent) {
-        super();
+        super(gameBoardComponent);
         this.gameBoardComponent = gameBoardComponent;
     }
 }

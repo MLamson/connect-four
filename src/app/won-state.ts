@@ -1,6 +1,6 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
 export class WonState implements State {
-
+  currentPlayer: string;
   gameBoardComponent: GameboardComponent;
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
@@ -16,5 +16,9 @@ export class WonState implements State {
 
   checkTie(): string {
     return "checkTie in won state should do nothing";
+  }
+
+  resetGame(): void {
+    
   }
 }

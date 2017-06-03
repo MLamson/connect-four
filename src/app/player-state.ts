@@ -8,6 +8,7 @@ export abstract class Player implements State{
 
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
+    // this.currentPlayer = this.gameBoardComponent.currentPlayer;
   }
     resetGame(): void {
         console.log("in resetGame on playerState");
@@ -15,23 +16,25 @@ export abstract class Player implements State{
 
      placePiece(column: number, row: number) {
 
-    this.lowestOpenSpace(column, row);
-
-    if (this.checkWin()) {
-      this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
-    }
-    else {
-      if (this.gameBoardComponent.state.currentPlayer === "Player One") {
-          this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState();
+      this.lowestOpenSpace(column, row);
+      if (this.checkTie()) {
+        this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
       }
-      else if (this.gameBoardComponent.state.currentPlayer === "Player Two") {
-          this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
+      if (this.checkWin()) {
+        this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
       }
-    }
-     if (this.checkTie()) {
-      this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
-    }
+      else {
+        if (this.gameBoardComponent.state.currentPlayer === "Player One") {
+            this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState();
+            this.gameBoardComponent.currentPlayer = this.gameBoardComponent.state.currentPlayer;
+        }
+        else if (this.gameBoardComponent.state.currentPlayer === "Player Two") {
+            this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
+            this.gameBoardComponent.currentPlayer = this.gameBoardComponent.state.currentPlayer; 
+        }
+      }
   }
+
   lowestOpenSpace(column: number, row: number): void {
 
     if (this.gameBoardComponent.gameboard[column][row] === 'open') {

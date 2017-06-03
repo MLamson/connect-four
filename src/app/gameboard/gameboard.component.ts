@@ -45,8 +45,8 @@ export class GameboardComponent {
   }
 
    resetBoard(): void {
-     this.playerOneState.resetGame();
-     this.playerTwoState.resetGame();
+    //  this.playerOneState.resetGame();
+    //  this.playerTwoState.resetGame();
      this.initialGameboardSettings();
   }
 
@@ -56,6 +56,7 @@ export class GameboardComponent {
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
     this.state = this.playerOneState;
+    this.currentPlayer = this.state.currentPlayer;
     this.winningPlayer = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }

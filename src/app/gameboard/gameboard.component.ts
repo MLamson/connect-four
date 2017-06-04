@@ -15,7 +15,7 @@ export class GameboardComponent {
   wonState: WonState;
   tieState: TieState;
   state: State;
-  currentPlayer: string;
+  // currentPlayer: string;
   winningPlayer: string = "";
   gameboard: any;
   checkWinner: any;
@@ -32,11 +32,12 @@ export class GameboardComponent {
   }
 
    placePiece(column: number, row: number) {
-     this.currentPlayer = this.state.currentPlayer;
+    //  this.currentPlayer = this.state.currentPlayer;
     if (this.gameboard[column][row] === "open") {
       this.state.placePiece(column, row);
       if (this.state === this.wonState) {
-        this.winningPlayer = this.state.checkWin();
+        this.winningPlayer = this.state.currentPlayer;
+        console.log(this.state.currentPlayer);
       }   
     } 
     if (this.state === this.tieState) {
@@ -56,7 +57,7 @@ export class GameboardComponent {
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
     this.state = this.playerOneState;
-    this.currentPlayer = this.state.currentPlayer;
+    // this.currentPlayer = this.state.currentPlayer;
     this.winningPlayer = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }

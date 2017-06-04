@@ -8,7 +8,6 @@ export abstract class Player implements State{
 
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
-    // this.currentPlayer = this.gameBoardComponent.currentPlayer;
   }
     resetGame(): void {
         console.log("in resetGame on playerState");
@@ -26,11 +25,9 @@ export abstract class Player implements State{
       else {
         if (this.gameBoardComponent.state.currentPlayer === "Player One") {
             this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState();
-            this.gameBoardComponent.currentPlayer = this.gameBoardComponent.state.currentPlayer;
         }
         else if (this.gameBoardComponent.state.currentPlayer === "Player Two") {
             this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
-            this.gameBoardComponent.currentPlayer = this.gameBoardComponent.state.currentPlayer; 
         }
       }
   }
@@ -39,22 +36,22 @@ export abstract class Player implements State{
 
     if (this.gameBoardComponent.gameboard[column][row] === 'open') {
       if (this.gameBoardComponent.gameboard[column][1] !== 'open') {
-        this.gameBoardComponent.gameboard[column].splice(0, 1, this.gameBoardComponent.currentPlayer);
+        this.gameBoardComponent.gameboard[column].splice(0, 1, this.gameBoardComponent.state.currentPlayer);
       }
       else if (this.gameBoardComponent.gameboard[column][2] !== 'open') {
-        this.gameBoardComponent.gameboard[column].splice(1, 1, this.gameBoardComponent.currentPlayer);
+        this.gameBoardComponent.gameboard[column].splice(1, 1, this.gameBoardComponent.state.currentPlayer);
       }
       else if (this.gameBoardComponent.gameboard[column][3] !== 'open') {
-        this.gameBoardComponent.gameboard[column].splice(2, 1, this.gameBoardComponent.currentPlayer);
+        this.gameBoardComponent.gameboard[column].splice(2, 1, this.gameBoardComponent.state.currentPlayer);
       }
       else if (this.gameBoardComponent.gameboard[column][4] !== 'open') {
-        this.gameBoardComponent.gameboard[column].splice(3, 1, this.gameBoardComponent.currentPlayer);
+        this.gameBoardComponent.gameboard[column].splice(3, 1, this.gameBoardComponent.state.currentPlayer);
       }
       else if (this.gameBoardComponent.gameboard[column][5] !== 'open') {
-        this.gameBoardComponent.gameboard[column].splice(4, 1, this.gameBoardComponent.currentPlayer);
+        this.gameBoardComponent.gameboard[column].splice(4, 1, this.gameBoardComponent.state.currentPlayer);
       }
       else {
-        this.gameBoardComponent.gameboard[column].splice(5, 1, this.gameBoardComponent.currentPlayer);
+        this.gameBoardComponent.gameboard[column].splice(5, 1, this.gameBoardComponent.state.currentPlayer);
       }
     }
   }

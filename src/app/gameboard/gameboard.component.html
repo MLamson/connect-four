@@ -1,8 +1,8 @@
 
 <div class="main-container">
   <div class="game-container">
-    <div *ngIf="winningPlayer === ''" class="current-player" [class.red-player]="currentPlayer === 'Player Two'"
-      [class.yellow-player]="currentPlayer === 'Player One'">Current Player is: {{ currentPlayer }}
+    <div *ngIf="winningPlayer === ''" class="current-player" [class.red-player]="state.currentPlayer === 'Player Two'"
+      [class.yellow-player]="state.currentPlayer === 'Player One'">Current Player is: {{ state.currentPlayer }}
     </div>
     <div *ngIf="winningPlayer !== ''" class="current-player winner">{{ winningPlayer }}
     </div>

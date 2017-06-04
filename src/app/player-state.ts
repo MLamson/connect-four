@@ -20,6 +20,7 @@ export abstract class Player implements State{
         this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
       }
       if (this.checkWin()) {
+        this.gameBoardComponent.wonState.currentPlayer = this.gameBoardComponent.state.currentPlayer;
         this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
       }
       else {

@@ -32,12 +32,10 @@ export class GameboardComponent {
   }
 
    placePiece(column: number, row: number) {
-    //  this.currentPlayer = this.state.currentPlayer;
     if (this.gameboard[column][row] === "open") {
       this.state.placePiece(column, row);
       if (this.state === this.wonState) {
-        this.winningPlayer = this.state.currentPlayer;
-        console.log(this.state.currentPlayer);
+        this.winningPlayer = this.state.checkWin();
       }   
     } 
     if (this.state === this.tieState) {

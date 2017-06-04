@@ -11,7 +11,7 @@ export class WonState implements State {
   }
 
   checkWin(): string {
-    return "The winner is: " + this.gameBoardComponent.currentPlayer;
+    return "The winner is: " + this.gameBoardComponent.state.currentPlayer;
   }
 
   checkTie(): string {
@@ -19,6 +19,6 @@ export class WonState implements State {
   }
 
   resetGame(): void {
-    
+
   }
 }

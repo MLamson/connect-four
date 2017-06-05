@@ -11,6 +11,7 @@ export abstract class Player implements State{
   }
     resetGame(): void {
         console.log("in resetGame on playerState");
+        this.gameBoardComponent.initialGameboardSettings();
     }
 
      placePiece(column: number, row: number): any {

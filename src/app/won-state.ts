@@ -19,6 +19,6 @@ export class WonState implements State {
   }
 
   resetGame(): void {
-
+      this.gameBoardComponent.initialGameboardSettings();
   }
 }

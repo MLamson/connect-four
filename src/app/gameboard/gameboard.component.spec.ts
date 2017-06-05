@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { GameboardComponent } from './gameboard.component';
-import {PlacePieceState} from "../place-piece-state";
 import {WonState} from "../won-state";
 import {CheckWin} from "../check-win";
 
@@ -56,7 +55,7 @@ describe('GameboardComponent', () => {
                                 ["open", "open", "open", "open", "open", "open"],
                                 ["yellow", "red", "open", "open", "open", "open"]];
     gameBoardComponent.gameboard = initialGameBoard;
-    gameBoardComponent.resetBoard();
+    gameBoardComponent.resetGame();
     let restartedGameBoard: any = [["open", "open", "open", "open", "open", "open"],
                                   ["open", "open", "open", "open", "open", "open"],
                                   ["open", "open", "open", "open", "open", "open"],

@@ -42,10 +42,9 @@ export class GameboardComponent {
       }
   }
 
-   resetBoard(): void {
-    //  this.playerOneState.resetGame();
-    //  this.playerTwoState.resetGame();
-     this.initialGameboardSettings();
+   resetGame(): void {
+     this.state.resetGame();
+    //  this.initialGameboardSettings();
   }
 
   initialGameboardSettings(): void {

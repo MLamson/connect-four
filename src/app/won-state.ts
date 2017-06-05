@@ -10,15 +10,7 @@ export class WonState implements State {
     alert("game over, cannot add anymore checkers");
   }
 
-  checkWin(): string {
-    return "The winner is: " + this.gameBoardComponent.state.currentPlayer;
-  }
-
-  checkTie(): string {
-    return "checkTie in won state should do nothing";
-  }
-
   resetGame(): void {
-      this.gameBoardComponent.initialGameboardSettings();
+    this.gameBoardComponent.initialGameboardSettings();
   }
 }

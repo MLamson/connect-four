@@ -10,14 +10,6 @@ export class TieState implements State {
     alert("game over, cannot add anymore checkers");
   }
 
-  checkWin(): string {
-    return "Draw: no one wins";
-  }
-
-  checkTie(): string {
-    return "Draw: No one wins";
-  }
-
   resetGame(): void {
       this.gameBoardComponent.initialGameboardSettings();
   }

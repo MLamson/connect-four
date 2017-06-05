@@ -9,26 +9,26 @@ export abstract class Player implements State{
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
   }
-    resetGame(): void {
-        console.log("in resetGame on playerState");
-        this.gameBoardComponent.initialGameboardSettings();
-    }
 
-     placePiece(column: number, row: number): any {
-      this.lowestOpenSpace(column, row);
-      if (this.checkTie()) {
-        this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
-        return;
-      }
-      if (this.checkWin()) {
-        this.gameBoardComponent.wonState.currentPlayer = this.gameBoardComponent.state.currentPlayer;
-        this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
-        return;
-      }
-      this.gameBoardComponent.state = this.gameBoardComponent.state.currentPlayer === "Player One"
-        ? this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState()
-        : this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
-      
+  resetGame(): void {
+      console.log("in resetGame on playerState");
+      this.gameBoardComponent.initialGameboardSettings();
+  }
+
+  placePiece(column: number, row: number): any {
+  this.lowestOpenSpace(column, row);
+  if (this.checkTie()) {
+    this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
+    return;
+  }
+  if (this.checkWin()) {
+    this.gameBoardComponent.wonState.currentPlayer = this.gameBoardComponent.state.currentPlayer;
+    this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
+    return;
+  }
+  this.gameBoardComponent.state = this.gameBoardComponent.state.currentPlayer === "Player One"
+    ? this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState()
+    : this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
   }
 
   lowestOpenSpace(column: number, row: number): void {

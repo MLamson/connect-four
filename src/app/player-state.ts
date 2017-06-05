@@ -13,28 +13,24 @@ export abstract class Player implements State{
         console.log("in resetGame on playerState");
     }
 
-     placePiece(column: number, row: number) {
-
+     placePiece(column: number, row: number): any {
       this.lowestOpenSpace(column, row);
       if (this.checkTie()) {
         this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
+        return;
       }
       if (this.checkWin()) {
         this.gameBoardComponent.wonState.currentPlayer = this.gameBoardComponent.state.currentPlayer;
         this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
+        return;
       }
-      else {
-        if (this.gameBoardComponent.state.currentPlayer === "Player One") {
-            this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState();
-        }
-        else if (this.gameBoardComponent.state.currentPlayer === "Player Two") {
-            this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
-        }
-      }
+      this.gameBoardComponent.state = this.gameBoardComponent.state.currentPlayer === "Player One"
+        ? this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState()
+        : this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
+      
   }
 
   lowestOpenSpace(column: number, row: number): void {
-
     if (this.gameBoardComponent.gameboard[column][row] === 'open') {
       if (this.gameBoardComponent.gameboard[column][1] !== 'open') {
         this.gameBoardComponent.gameboard[column].splice(0, 1, this.gameBoardComponent.state.currentPlayer);

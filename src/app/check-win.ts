@@ -1,6 +1,22 @@
 import { GameboardComponent } from "./gameboard/gameboard.component";
 
 export class CheckWin {
+
+ checkTie(gameboardComponent: GameboardComponent): any {
+    let numberOfOpenSpaces: number = 0;
+    for (let i: number = 0; i < 6; i++) {
+      for (let j: number = 0; i < 7; i++) {
+        if (gameboardComponent.gameboard[i][j] === "open") {
+          numberOfOpenSpaces++;
+        }
+      }
+    }
+    if (numberOfOpenSpaces > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   
 checkWin(gameboardComponent: GameboardComponent): boolean {
     for (let column: number = 0; column <= 3; column++) {

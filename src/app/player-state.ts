@@ -59,18 +59,6 @@ export abstract class Player implements State{
   }
   
   checkTie(): any {
-    let numberOfOpenSpaces: number = 0;
-    for (let i: number = 0; i < 6; i++) {
-      for (let j: number = 0; i < 7; i++) {
-        if (this.gameBoardComponent.gameboard[i][j] === "open") {
-          numberOfOpenSpaces++;
-        }
-      }
-    }
-    if (numberOfOpenSpaces > 0) {
-      return false;
-    } else {
-      return true;
-    }
+    return this.checkWinner.checkTie(this.gameBoardComponent);
   }
 }

@@ -34,11 +34,11 @@ export class GameboardComponent {
     if (this.gameboard[column][row] === "open") {
       this.state.placePiece(column, row);
       if (this.state === this.wonState) {
-        this.winningPlayer = this.state.currentPlayer;
+        this.winningPlayer = "The Winner is: " + this.state.currentPlayer;
       }   
     } 
     if (this.state === this.tieState) {
-        this.winningPlayer = this.state.currentPlayer;
+        this.winningPlayer = "Draw";
       }
   }
 

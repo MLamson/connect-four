@@ -11,11 +11,7 @@ export class CheckWin {
         }
       }
     }
-    if (numberOfOpenSpaces > 0) {
-      return false;
-    } else {
-      return true;
-    }
+    return !(numberOfOpenSpaces > 0);
   }
   
 checkWin(gameboardComponent: GameboardComponent): boolean {

@@ -38,9 +38,6 @@ export class GameboardComponent {
     if (this.state === this.wonState) {
         this.gameResult = "The Winner is: " + this.state.currentPlayer;
       }   
-    if (this.state === this.tieState) {
-        this.gameResult = "Draw";
-      }
   }
 
    resetGame(): void {
@@ -62,6 +59,7 @@ export class GameboardComponent {
   }
 
   getTieState() {
+    this.gameResult = "Draw";
     return this.tieState;
   }
 

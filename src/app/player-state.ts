@@ -18,7 +18,7 @@ export abstract class Player implements State{
   abstract updatePlayer(); 
 
   placePiece(column: number, row: number): any {
-    this.lowestOpenSpace(column, row);
+    this.placePieceInLowestOpenSpace(column, row);
     if (this.checkTie()) {
       this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
       return;
@@ -31,7 +31,7 @@ export abstract class Player implements State{
     this.gameBoardComponent.state.updatePlayer();
   }
 
-  lowestOpenSpace(column: number, row: number): void {
+  placePieceInLowestOpenSpace(column: number, row: number): void {
     if (this.gameBoardComponent.gameboard[column][row] === 'open') {
       if (this.gameBoardComponent.gameboard[column][1] !== 'open') {
         this.gameBoardComponent.gameboard[column].splice(0, 1, this.gameBoardComponent.state.currentPlayer);

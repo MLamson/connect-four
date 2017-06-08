@@ -13,4 +13,8 @@ export class TieState implements State {
   resetGame(): void {
       this.gameBoardComponent.initialGameboardSettings();
   }
+
+  updatePlayer(): void {
+    
+  }
 }

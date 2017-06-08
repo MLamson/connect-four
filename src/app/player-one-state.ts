@@ -10,4 +10,8 @@ export class PlayerOneState extends Player {
         super(gameBoardComponent);
         this.gameBoardComponent = gameBoardComponent;
     }
+
+    updatePlayer(): void {
+        this.gameBoardComponent.state = this.gameBoardComponent.getPlayerTwoState();
+    }
 }

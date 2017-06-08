@@ -15,7 +15,7 @@ export class GameboardComponent {
   wonState: WonState;
   tieState: TieState;
   state: State;
-  winningPlayer: string = "";
+  gameResult: string = "";
   gameboard: any;
   checkWinner: any;
   initialGameboard: any = [["open", "open", "open", "open", "open", "open"],
@@ -31,14 +31,15 @@ export class GameboardComponent {
   }
 
    placePiece(column: number, row: number) {
+     //all can go to state
     if (this.gameboard[column][row] === "open") {
       this.state.placePiece(column, row); 
     } 
     if (this.state === this.wonState) {
-        this.winningPlayer = "The Winner is: " + this.state.currentPlayer;
+        this.gameResult = "The Winner is: " + this.state.currentPlayer;
       }   
     if (this.state === this.tieState) {
-        this.winningPlayer = "Draw";
+        this.gameResult = "Draw";
       }
   }
 
@@ -52,7 +53,7 @@ export class GameboardComponent {
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
     this.state = this.playerOneState;
-    this.winningPlayer = "";
+    this.gameResult = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }
 

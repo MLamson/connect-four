@@ -30,11 +30,8 @@ export class GameboardComponent {
    this.initialGameboardSettings();
   }
 
-   placePiece(column: number, row: number) {
-     //all can go to state
-    if (this.gameboard[column][row] === "open") {
+  placePiece(column: number, row: number) {
       this.state.placePiece(column, row); 
-    } 
   }
 
    resetGame(): void {

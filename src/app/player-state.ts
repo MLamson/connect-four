@@ -18,17 +18,19 @@ export abstract class Player implements State{
   abstract updatePlayer(); 
 
   placePiece(column: number, row: number): any {
-    this.placePieceInLowestOpenSpace(column, row);
-    if (this.checkTie()) {
-      this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
-      return;
+    if (this.gameBoardComponent.gameboard[column][row] === "open") {
+      this.placePieceInLowestOpenSpace(column, row);
+      if (this.checkTie()) {
+        this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
+        return;
+      }
+      if (this.checkWin()) {
+        this.gameBoardComponent.wonState.currentPlayer = this.gameBoardComponent.state.currentPlayer;
+        this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
+        return;
+      }
+      this.gameBoardComponent.state.updatePlayer();
     }
-    if (this.checkWin()) {
-      this.gameBoardComponent.wonState.currentPlayer = this.gameBoardComponent.state.currentPlayer;
-      this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
-      return;
-    }
-    this.gameBoardComponent.state.updatePlayer();
   }
 
   placePieceInLowestOpenSpace(column: number, row: number): void {

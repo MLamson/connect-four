@@ -35,9 +35,6 @@ export class GameboardComponent {
     if (this.gameboard[column][row] === "open") {
       this.state.placePiece(column, row); 
     } 
-    if (this.state === this.wonState) {
-        this.gameResult = "The Winner is: " + this.state.currentPlayer;
-      }   
   }
 
    resetGame(): void {
@@ -55,6 +52,7 @@ export class GameboardComponent {
   }
 
   getWonState() {
+    this.gameResult = "The Winner is: " + this.state.currentPlayer;
     return this.wonState;
   }
 

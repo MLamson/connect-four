@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { WonState } from "../won-state";
 import { TieState } from "../tie-state";
 import { PlayerOneState } from "../player-one-state";
 import { PlayerTwoState } from "../player-two-state";
 
 @Component({
-  selector: 'app-game-board',
-  templateUrl: 'gameboard.component.html',
-  styleUrls: ['gameboard.component.css']
+  selector: "app-game-board",
+  templateUrl: "gameboard.component.html",
+  styleUrls: ["gameboard.component.css"]
 })
 export class GameboardComponent {
   playerOneState: PlayerOneState;
@@ -18,24 +18,26 @@ export class GameboardComponent {
   gameResult: string = "";
   gameboard: any;
   checkWinner: any;
-  initialGameboard: any = [["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"],
-                          ["open", "open", "open", "open", "open", "open"]];
+  initialGameboard: any = [
+    ["open", "open", "open", "open", "open", "open"],
+    ["open", "open", "open", "open", "open", "open"],
+    ["open", "open", "open", "open", "open", "open"],
+    ["open", "open", "open", "open", "open", "open"],
+    ["open", "open", "open", "open", "open", "open"],
+    ["open", "open", "open", "open", "open", "open"],
+    ["open", "open", "open", "open", "open", "open"]
+  ];
 
   constructor() {
-   this.initialGameboardSettings();
+    this.initialGameboardSettings();
   }
 
   placePiece(column: number, row: number) {
-      this.state.placePiece(column, row); 
+    this.state.placePiece(column, row);
   }
 
-   resetGame(): void {
-     this.state.resetGame();
+  resetGame(): void {
+    this.state.resetGame();
   }
 
   initialGameboardSettings(): void {
@@ -62,7 +64,7 @@ export class GameboardComponent {
     return this.playerTwoState;
   }
 
-   getPlayerOneState(): State {
+  getPlayerOneState(): State {
     return this.playerOneState;
   }
 }

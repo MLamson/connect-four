@@ -11,7 +11,6 @@ export abstract class Player implements State{
   }
 
   resetGame(): void {
-      console.log("in resetGame on playerState");
       this.gameBoardComponent.initialGameboardSettings();
   }
 
@@ -21,12 +20,11 @@ export abstract class Player implements State{
     if (this.gameBoardComponent.gameboard[column][row] === "open") {
       this.placePieceInLowestOpenSpace(column, row);
       if (this.checkTie()) {
-        this.gameBoardComponent.state = this.gameBoardComponent.getTieState();
+        this.gameBoardComponent.getTieState();
         return;
       }
       if (this.checkWin()) {
-        this.gameBoardComponent.wonState.currentPlayer = this.gameBoardComponent.state.currentPlayer;
-        this.gameBoardComponent.state = this.gameBoardComponent.getWonState();
+        this.gameBoardComponent.getWonState();
         return;
       }
       this.gameBoardComponent.state.updatePlayer();

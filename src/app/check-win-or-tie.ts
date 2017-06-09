@@ -1,6 +1,6 @@
 import { GameboardComponent } from "./gameboard/gameboard.component";
 
-export class CheckWin {
+export class CheckWinOrTie {
 
  checkTie(gameboardComponent: GameboardComponent): any {
     let numberOfOpenSpaces: number = 0;

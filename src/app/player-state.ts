@@ -1,10 +1,10 @@
 import { GameboardComponent } from "./gameboard/gameboard.component";
-import { CheckWin } from "./check-win";
+import { CheckWinOrTie } from "./check-win-or-tie";
 
 export abstract class Player implements State {
   currentPlayer: string;
   gameBoardComponent: GameboardComponent;
-  checkWinner: CheckWin = new CheckWin();
+  checkWinner: CheckWinOrTie = new CheckWinOrTie();
 
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;

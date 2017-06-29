@@ -3,15 +3,15 @@ import { GameboardComponent } from './gameboard/gameboard.component';
 
 export class PlayerTwoState extends Player {
     
-    gameBoardComponent: GameboardComponent;
+    gameboardComponent: GameboardComponent;
     currentPlayer: string = "Player Two";
 
     constructor(gameBoardComponent: GameboardComponent) {
         super(gameBoardComponent);
-        this.gameBoardComponent = gameBoardComponent;
+        this.gameboardComponent = gameBoardComponent;
     }
 
     updatePlayer(): void {
-        this.gameBoardComponent.state = this.gameBoardComponent.getPlayerOneState();
+        this.gameboardComponent.state = this.gameboardComponent.setPlayerOneState();
     }
 }

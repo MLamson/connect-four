@@ -1,17 +1,18 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
 export class WonState implements State {
   currentPlayer: string;
-  gameBoardComponent: GameboardComponent;
+  
+  gameboardComponent: GameboardComponent;
   constructor(gameBoardComponent: GameboardComponent) {
-    this.gameBoardComponent = gameBoardComponent;
+    this.gameboardComponent = gameBoardComponent;
   }
-
+  gameResult: string = "Winner is: ";
   placePiece(): void {
     alert("game over, cannot add anymore checkers");
   }
 
   resetGame(): void {
-    this.gameBoardComponent.initialGameboardSettings();
+    this.gameboardComponent.initialGameboardSettings();
   }
 
   updatePlayer(): void {

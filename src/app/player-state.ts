@@ -3,81 +3,82 @@ import { CheckWinOrTie } from "./check-win-or-tie";
 
 export abstract class Player implements State {
   currentPlayer: string;
-  gameBoardComponent: GameboardComponent;
+  gameResult: string = "Current Player: ";
+  gameboardComponent: GameboardComponent;
   checkWinner: CheckWinOrTie = new CheckWinOrTie();
 
   constructor(gameBoardComponent: GameboardComponent) {
-    this.gameBoardComponent = gameBoardComponent;
+    this.gameboardComponent = gameBoardComponent;
   }
 
   resetGame(): void {
-    this.gameBoardComponent.initialGameboardSettings();
+    this.gameboardComponent.initialGameboardSettings();
   }
 
   abstract updatePlayer();
 
   placePiece(column: number, row: number): any {
-    if (this.gameBoardComponent.gameboard[column][row] === "open") {
+    if (this.gameboardComponent.gameboard[column][row] === "open") {
       this.placePieceInLowestOpenSpace(column, row);
       if (this.checkTie()) {
-        this.gameBoardComponent.getTieState();
+        this.gameboardComponent.changeToTieState();
         return;
       }
       if (this.checkWin()) {
-        this.gameBoardComponent.getWonState();
+        this.gameboardComponent.changeToWonState(this.currentPlayer);
         return;
       }
-      this.gameBoardComponent.state.updatePlayer();
+      this.gameboardComponent.state.updatePlayer();
     }
   }
 
   placePieceInLowestOpenSpace(column: number, row: number): void {
-    if (this.gameBoardComponent.gameboard[column][row] === "open") {
-      if (this.gameBoardComponent.gameboard[column][1] !== "open") {
-        this.gameBoardComponent.gameboard[column].splice(
+    if (this.gameboardComponent.gameboard[column][row] === "open") {
+      if (this.gameboardComponent.gameboard[column][1] !== "open") {
+        this.gameboardComponent.gameboard[column].splice(
           0,
           1,
-          this.gameBoardComponent.state.currentPlayer
+          this.gameboardComponent.state.currentPlayer
         );
-      } else if (this.gameBoardComponent.gameboard[column][2] !== "open") {
-        this.gameBoardComponent.gameboard[column].splice(
+      } else if (this.gameboardComponent.gameboard[column][2] !== "open") {
+        this.gameboardComponent.gameboard[column].splice(
           1,
           1,
-          this.gameBoardComponent.state.currentPlayer
+          this.gameboardComponent.state.currentPlayer
         );
-      } else if (this.gameBoardComponent.gameboard[column][3] !== "open") {
-        this.gameBoardComponent.gameboard[column].splice(
+      } else if (this.gameboardComponent.gameboard[column][3] !== "open") {
+        this.gameboardComponent.gameboard[column].splice(
           2,
           1,
-          this.gameBoardComponent.state.currentPlayer
+          this.gameboardComponent.state.currentPlayer
         );
-      } else if (this.gameBoardComponent.gameboard[column][4] !== "open") {
-        this.gameBoardComponent.gameboard[column].splice(
+      } else if (this.gameboardComponent.gameboard[column][4] !== "open") {
+        this.gameboardComponent.gameboard[column].splice(
           3,
           1,
-          this.gameBoardComponent.state.currentPlayer
+          this.gameboardComponent.state.currentPlayer
         );
-      } else if (this.gameBoardComponent.gameboard[column][5] !== "open") {
-        this.gameBoardComponent.gameboard[column].splice(
+      } else if (this.gameboardComponent.gameboard[column][5] !== "open") {
+        this.gameboardComponent.gameboard[column].splice(
           4,
           1,
-          this.gameBoardComponent.state.currentPlayer
+          this.gameboardComponent.state.currentPlayer
         );
       } else {
-        this.gameBoardComponent.gameboard[column].splice(
+        this.gameboardComponent.gameboard[column].splice(
           5,
           1,
-          this.gameBoardComponent.state.currentPlayer
+          this.gameboardComponent.state.currentPlayer
         );
       }
     }
   }
 
   checkWin(): boolean {
-    return this.checkWinner.checkWin(this.gameBoardComponent);
+    return this.checkWinner.checkWin(this.gameboardComponent);
   }
 
   checkTie(): any {
-    return this.checkWinner.checkTie(this.gameBoardComponent);
+    return this.checkWinner.checkTie(this.gameboardComponent);
   }
 }

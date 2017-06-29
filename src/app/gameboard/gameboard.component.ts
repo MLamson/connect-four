@@ -15,9 +15,8 @@ export class GameboardComponent {
   wonState: WonState;
   tieState: TieState;
   state: State;
-  gameResult: string = "";
   gameboard: any;
-  checkWinner: any;
+
   initialGameboard: any = [
     ["open", "open", "open", "open", "open", "open"],
     ["open", "open", "open", "open", "open", "open"],
@@ -46,25 +45,23 @@ export class GameboardComponent {
     this.wonState = new WonState(this);
     this.tieState = new TieState(this);
     this.state = this.playerOneState;
-    this.gameResult = "";
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }
 
-  getWonState() {
-    this.gameResult = "The Winner is: " + this.state.currentPlayer;
-    return this.wonState;
+  changeToWonState(playerThatWon: string) {
+    this.state = this.wonState;
+    this.state.currentPlayer = playerThatWon;
   }
 
-  getTieState() {
-    this.gameResult = "Draw";
-    return this.tieState;
+  changeToTieState() {
+    this.state = this.tieState;
   }
 
-  getPlayerTwoState(): State {
+  setPlayerTwoState(): State {
     return this.playerTwoState;
   }
 
-  getPlayerOneState(): State {
+  setPlayerOneState(): State {
     return this.playerOneState;
   }
 }

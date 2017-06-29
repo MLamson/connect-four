@@ -1,10 +1,9 @@
 
 <div class="main-container">
   <div class="game-container">
-    <div *ngIf="gameResult === ''" class="current-player" [class.red-player]="state.currentPlayer === 'Player Two'"
-      [class.yellow-player]="state.currentPlayer === 'Player One'">Current Player is: {{ state.currentPlayer }}
-    </div>
-    <div *ngIf="gameResult !== ''" class="current-player winner">{{ gameResult }}
+    <div class="current-player" [class.red-player]="state.currentPlayer === 'Player Two'"
+      [class.yellow-player]="state.currentPlayer === 'Player One'" 
+      [class.winner]="state === wonState">{{ state.gameResult }} {{ state.currentPlayer }}
     </div>
     <div class="board-flex">
       <div *ngFor="let position of gameboard; let column = index">

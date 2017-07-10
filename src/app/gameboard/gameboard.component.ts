@@ -48,20 +48,20 @@ export class GameboardComponent {
     this.gameboard = JSON.parse(JSON.stringify(this.initialGameboard));
   }
 
-  changeToWonState(playerThatWon: string) {
+  changeToWonState(playerThatWon: string): void {
     this.state = this.wonState;
     this.state.currentPlayer = playerThatWon;
   }
 
-  changeToTieState() {
+  changeToTieState(): void {
     this.state = this.tieState;
   }
 
-  setPlayerTwoState(): State {
-    return this.playerTwoState;
+  changeToPlayerTwoState(): void {
+    this.state = this.playerTwoState;
   }
 
-  setPlayerOneState(): State {
-    return this.playerOneState;
+  changeToPlayerOneState(): void {
+    this.state = this.playerOneState;
   }
 }

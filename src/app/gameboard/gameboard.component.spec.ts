@@ -142,13 +142,13 @@ describe("checkWin and checkTie", () => {
       ["open", "open", "open", "open", "open", "open"],
       ["open", "open", "open", "open", "open", "open"]
     ];
-    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent.gameboard)).toBeTruthy();
   });
 
   it("should check for four in a row", () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
     let checkWinner: CheckWinOrTie = new CheckWinOrTie();
-    expect(checkWinner.checkWin(gameboardComponent)).toBeFalsy();
+    expect(checkWinner.checkWin(gameboardComponent.gameboard)).toBeFalsy();
   });
 
   it("should return true for four in a row horizontal", () => {
@@ -163,7 +163,7 @@ describe("checkWin and checkTie", () => {
       ["open", "open", "open", "open", "open", "open"],
       ["open", "open", "open", "open", "open", "open"]
     ];
-    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent.gameboard)).toBeTruthy();
   });
 
   it("should return false for four in a row horizontal", () => {
@@ -178,7 +178,7 @@ describe("checkWin and checkTie", () => {
       ["open", "open", "open", "open", "open", "open"],
       ["open", "open", "open", "open", "open", "open"]
     ];
-    expect(checkWinner.checkWin(gameboardComponent)).toBeFalsy();
+    expect(checkWinner.checkWin(gameboardComponent.gameboard)).toBeFalsy();
   });
 
   it("should return true for four in a row vertical", () => {
@@ -193,7 +193,7 @@ describe("checkWin and checkTie", () => {
       ["open", "open", "open", "open", "open", "open"],
       ["open", "open", "open", "open", "open", "open"]
     ];
-    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent.gameboard)).toBeTruthy();
   });
 
   it("should return true for four in a row diagonal", () => {
@@ -208,7 +208,7 @@ describe("checkWin and checkTie", () => {
       ["open", "open", "open", "open", "open", "open"],
       ["open", "open", "open", "open", "open", "open"]
     ];
-    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent.gameboard)).toBeTruthy();
   });
 
   it("should return true for four in a row diagonal bottom left to top right", () => {
@@ -223,7 +223,7 @@ describe("checkWin and checkTie", () => {
       ["open", "open", "open", "open", "yellow", "open"],
       ["open", "open", "open", "open", "open", "yellow"]
     ];
-    expect(checkWinner.checkWin(gameboardComponent)).toBeTruthy();
+    expect(checkWinner.checkWin(gameboardComponent.gameboard)).toBeTruthy();
   });
 
   it("should set state to WonState if four in a row", () => {
@@ -238,7 +238,7 @@ describe("checkWin and checkTie", () => {
       ["open", "open", "open", "open", "yellow", "open"],
       ["open", "open", "open", "open", "open", "yellow"]
     ];
-    let result: boolean = checkWinOrTie.checkWin(gameboardComponent);
+    let result: boolean = checkWinOrTie.checkWin(gameboardComponent.gameboard);
     expect(result).toEqual(true);
   });
 
@@ -254,7 +254,7 @@ describe("checkWin and checkTie", () => {
       ["red", "red", "red", "yellow", "yellow", "yellow"],
       ["yellow", "yellow", "yellow", "red", "red", "red"]
     ];
-    let result: boolean = checkWinOrTie.checkTie(gameboardComponent);
+    let result: boolean = checkWinOrTie.checkTie(gameboardComponent.gameboard);
     expect(result).toEqual(true);
   });
 });

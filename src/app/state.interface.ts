@@ -1,7 +1,6 @@
 interface State {
   currentPlayer;
-  gameResult;
+  gameStatus;
   placePiece(column: number, row: number);
   resetGame();
-  updatePlayer();
 }

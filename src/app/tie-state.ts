@@ -1,7 +1,7 @@
 import {GameboardComponent} from "./gameboard/gameboard.component";
 export class TieState implements State {
   currentPlayer: string;
-  gameResult: string = "Draw";
+  gameStatus: string = "Draw";
   gameBoardComponent: GameboardComponent;
   constructor(gameBoardComponent: GameboardComponent) {
     this.gameBoardComponent = gameBoardComponent;
@@ -13,9 +13,5 @@ export class TieState implements State {
 
   resetGame(): void {
       this.gameBoardComponent.initialGameboardSettings();
-  }
-
-  updatePlayer(): void {
-    
   }
 }

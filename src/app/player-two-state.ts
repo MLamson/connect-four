@@ -12,6 +12,6 @@ export class PlayerTwoState extends Player {
     }
 
     updatePlayer(): void {
-        this.gameboardComponent.state = this.gameboardComponent.setPlayerOneState();
+        this.gameboardComponent.changeToPlayerOneState();
     }
 }

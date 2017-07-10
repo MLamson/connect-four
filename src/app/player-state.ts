@@ -22,7 +22,7 @@ export abstract class Player implements State {
       return;
     }
 
-    this.placePieceInLowestOpenSpace(column, row);
+    this.placePieceInLowestOpenSpace(column);
 
     if (this.checkWin()) {
       this.gameboardComponent.changeToWonState(this.currentPlayer);
@@ -36,14 +36,11 @@ export abstract class Player implements State {
   }
 
 
-  placePieceInLowestOpenSpace(column: number, row: number): void {
-
-    if (this.gameboardComponent.gameboard[column][row] === "open") {
-      for (let index: number = 1; index < 7; index++) {
-        if (this.gameboardComponent.gameboard[column][index] !== "open") {
-          this.gameboardComponent.gameboard[column][index - 1] = this.gameboardComponent.state.currentPlayer;
-          return;
-        }
+  placePieceInLowestOpenSpace(column: number): void {
+    for (let index: number = 1; index < 7; index++) {
+      if (this.gameboardComponent.gameboard[column][index] !== "open") {
+        this.gameboardComponent.gameboard[column][index - 1] = this.gameboardComponent.state.currentPlayer;
+        return;
       }
     }
   }

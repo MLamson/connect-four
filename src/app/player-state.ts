@@ -24,12 +24,12 @@ export abstract class Player implements State {
 
     this.placePieceInLowestOpenSpace(column, row);
 
-    if (this.checkTie()) {
-      this.gameboardComponent.changeToTieState();
-      return;
-    }
     if (this.checkWin()) {
       this.gameboardComponent.changeToWonState(this.currentPlayer);
+      return;
+    }
+    if (this.checkTie()) {
+      this.gameboardComponent.changeToTieState();
       return;
     }
     this.updatePlayer();

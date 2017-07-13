@@ -24,20 +24,19 @@ export abstract class Player implements State {
 
     this.placePieceInLowestOpenSpace(column);
 
-    if (this.checkWin()) {
+    if (this.checkIfWin()) {
       this.gameboardComponent.changeToWonState(this.currentPlayer);
       return;
     }
-    if (this.checkTie()) {
+    if (this.checkIfTie()) {
       this.gameboardComponent.changeToTieState();
       return;
     }
     this.updatePlayer();
   }
 
-
   placePieceInLowestOpenSpace(column: number): void {
-    for (let index: number = 1; index < 7; index++) {
+      for (let index: number = 1; index < 7; index++) {
       if (this.gameboardComponent.gameboard[column][index] !== "open") {
         this.gameboardComponent.gameboard[column][index - 1] = this.gameboardComponent.state.currentPlayer;
         return;
@@ -45,11 +44,11 @@ export abstract class Player implements State {
     }
   }
 
-  checkWin(): boolean {
+  checkIfWin(): boolean {
     return this.checkWinner.checkWin(this.gameboardComponent.gameboard);
   }
 
-  checkTie(): any {
+  checkIfTie(): any {
     return this.checkWinner.checkTie(this.gameboardComponent.gameboard);
   }
 }

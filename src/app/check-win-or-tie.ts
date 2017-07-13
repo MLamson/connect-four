@@ -1,8 +1,6 @@
-import { GameboardComponent } from "./gameboard/gameboard.component";
-
 export class CheckWinOrTie {
 
- checkTie(gameboard: any): any {
+  checkTie(gameboard: any): any {
     let numberOfOpenSpaces: number = 0;
     for (let i: number = 0; i < 6; i++) {
       for (let j: number = 0; i < 7; i++) {
@@ -14,7 +12,27 @@ export class CheckWinOrTie {
     return !(numberOfOpenSpaces > 0);
   }
 
-checkWin(gameboard: any): boolean {
+  checkWin(gameboard: any): boolean {
+
+    if (this.checkHorizontalWin(gameboard)) {
+      return true;
+    }
+
+    if (this.checkVerticalWin(gameboard)) {
+      return true;
+    }
+
+    if (this.checkDiagonalRight(gameboard)) {
+      return true;
+    }
+
+    if (this.checkDiagonalLeft(gameboard)) {
+      return true;
+    }
+    return false;
+  }
+
+  private checkHorizontalWin(gameboard: any): boolean {
     for (let column: number = 0; column <= 3; column++) {
       for (let row: number = 0; row <= 5; row++) {
         if (this.checkFourInARowHorizontal(column, row, gameboard)) {
@@ -22,7 +40,9 @@ checkWin(gameboard: any): boolean {
         }
       }
     }
+  }
 
+  private checkVerticalWin(gameboard: any): boolean {
     for (let row: number = 0; row <= 3; row++) {
       for (let column: number = 0; column <= 6; column++) {
         if (this.checkForInARowVertical(column, row, gameboard)) {
@@ -30,7 +50,9 @@ checkWin(gameboard: any): boolean {
         }
       }
     }
+  }
 
+  private checkDiagonalRight(gameboard: any): boolean {
     for (let column: number = 0; column <= 3; column++) {
       for (let row: number = 5; row >= 0; row--) {
         if (this.checkFourInARowDiagonalStartBottomRight(column, row, gameboard)) {
@@ -38,7 +60,9 @@ checkWin(gameboard: any): boolean {
         }
       }
     }
+  }
 
+  private checkDiagonalLeft(gameboard: any): boolean {
     for (let column: number = 6; column >= 3; column--) {
       for (let row: number = 5; row >= 0; row--) {
         if (this.checkFourInARowStartBottomLeft(column, row, gameboard)) {
@@ -46,7 +70,6 @@ checkWin(gameboard: any): boolean {
         }
       }
     }
-    return false;
   }
 
   private checkFourInARowStartBottomLeft(column: number, row: number, gameboard: any) {
@@ -76,4 +99,6 @@ checkWin(gameboard: any): boolean {
       && gameboard[column + 2][row] === gameboard[column + 3][row]
       && gameboard[column][row] !== "open";
   }
+
+
 }

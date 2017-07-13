@@ -1,10 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { By } from "@angular/platform-browser";
-import { DebugElement } from "@angular/core";
 
 import { GameboardComponent } from "./gameboard.component";
-import { WonState } from "../won-state";
 import { CheckWinOrTie } from "../check-win-or-tie";
 
 describe("GameboardComponent", () => {
@@ -112,7 +109,7 @@ describe("GameboardComponent", () => {
   });
 });
 
-describe("checkWin and checkTie", () => {
+describe("checkWin and checkIfTie", () => {
   let component: GameboardComponent;
   let fixture: ComponentFixture<GameboardComponent>;
 
@@ -256,5 +253,146 @@ describe("checkWin and checkTie", () => {
     ];
     let result: boolean = checkWinOrTie.checkTie(gameboardComponent.gameboard);
     expect(result).toEqual(true);
+  });
+});
+
+describe("placePieceInLowestOpenSpace", () => {
+  let component: GameboardComponent;
+  let fixture: ComponentFixture<GameboardComponent>;
+
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [GameboardComponent]
+      }).compileComponents();
+    })
+  );
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(GameboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it("should place token in lowest open space", () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let currentGameboard: any = [
+      ["open", "open", "open", "open", "open", "Player Two"],
+      ["open", "open", "open", "open", "open", "Player One"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]
+    ];
+    gameboardComponent.gameboard = currentGameboard;
+    gameboardComponent.placePiece(1, 1);
+    expect(gameboardComponent.gameboard).toEqual([
+      ["open", "open", "open", "open", "open", "Player Two"],
+      ["open", "open", "open", "open", "Player One", "Player One"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]
+    ]);
+  });
+
+  it("should not place a token if invalid column or row", () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let currentGameboard: any = [
+      ["open", "open", "open", "open", "open", "Player Two"],
+      ["open", "open", "open", "open", "open", "Player One"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]
+    ];
+    gameboardComponent.gameboard = currentGameboard;
+    gameboardComponent.placePiece(0, 5);
+    expect(gameboardComponent.gameboard).toEqual([
+      ["open", "open", "open", "open", "open", "Player Two"],
+      ["open", "open", "open", "open", "open", "Player One"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]
+    ]);
+  });
+
+  it("should not place a token if invalid column or row", () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let currentGameboard: any = [
+      ["open", "open", "open", "open", "open", "Player Two"],
+      ["open", "open", "open", "open", "open", "Player One"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]
+    ];
+    gameboardComponent.gameboard = currentGameboard;
+    gameboardComponent.placePiece(6, 8);
+    expect(gameboardComponent.gameboard).toEqual([
+      ["open", "open", "open", "open", "open", "Player Two"],
+      ["open", "open", "open", "open", "open", "Player One"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]
+    ]);
+  });
+});
+describe("player state abstract class", () => {
+  let component: GameboardComponent;
+  let fixture: ComponentFixture<GameboardComponent>;
+
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [GameboardComponent]
+      }).compileComponents();
+    })
+  );
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(GameboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it("should set state to WonState if there is a winner", () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let currentGameboard: any = [
+      ["open", "open", "open", "Player Two", "Player Two", "Player Two"],
+      ["open", "open", "open", "Player One", "Player One", "Player One"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"],
+      ["open", "open", "open", "open", "open", "open"]
+    ];
+    gameboardComponent.gameboard = currentGameboard;
+    gameboardComponent.placePiece(1, 2);
+    expect(gameboardComponent.state).toEqual(gameboardComponent.wonState);
+  });
+
+  it("should set state to TieState if no winner", () => {
+    let gameboardComponent: GameboardComponent = new GameboardComponent();
+    let currentGameboard: any = [
+      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
+      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
+      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
+      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
+      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
+      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
+      ["open", "Player Two", "Player One", "Player Two", "Player One", "Player Two"]
+    ];
+    gameboardComponent.gameboard = currentGameboard;
+    gameboardComponent.placePiece(6, 0);
+    expect(gameboardComponent.state).toEqual(gameboardComponent.tieState);
   });
 });

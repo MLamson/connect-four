@@ -109,7 +109,7 @@ describe("GameboardComponent", () => {
   });
 });
 
-describe("checkWin and checkIfTie", () => {
+describe("checkWin and gameIsTied", () => {
   let component: GameboardComponent;
   let fixture: ComponentFixture<GameboardComponent>;
 

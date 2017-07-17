@@ -7,6 +7,7 @@ export class WonState implements State {
     this.gameboardComponent = gameBoardComponent;
   }
   gameStatus: string = "Winner is: ";
+
   placePiece(): void {
     alert("game over, cannot add anymore checkers");
   }

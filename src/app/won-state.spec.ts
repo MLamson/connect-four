@@ -21,18 +21,9 @@ describe("won state", () => {
 
   it("should alert when trying to place a piece after game over", () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
-    let currentGameboard: any = [
-      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
-      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
-      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
-      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["Player One", "Player Two", "Player One", "Player Two", "Player One", "Player Two"]
-    ];
-    gameboardComponent.gameboard = currentGameboard;
-    gameboardComponent.placePiece(1, 2);
-    expect(gameboardComponent.wonState.placePiece()).toHaveBeenCalled;
+    spyOn(window, "alert");
+    gameboardComponent.wonState.placePiece();
+    expect(window.alert).toHaveBeenCalled();
   });
 
   it("should reset game if resetGame method called", () => {
@@ -44,7 +35,7 @@ describe("won state", () => {
       ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
       ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
       ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["open", "Player Two", "Player One", "Player Two", "Player One", "Player Two"]
+      ["Player Two", "Player Two", "Player Two", "Player Two", "Player One", "Player Two"]
     ];
     gameboardComponent.gameboard = currentGameboard;
     gameboardComponent.resetGame();

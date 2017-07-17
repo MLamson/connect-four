@@ -19,20 +19,11 @@ describe("tie state", () => {
     fixture.detectChanges();
   });
 
-  it("should alert when trying to place a piece after game over", () => {
+  it("should alert when trying to place a piece after game over WITH ALERT", () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
-    let currentGameboard: any = [
-      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
-      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
-      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
-      ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["Player One", "Player Two", "Player One", "Player Two", "Player One", "Player Two"]
-    ];
-    gameboardComponent.gameboard = currentGameboard;
-    gameboardComponent.placePiece(1, 2);
-    expect(gameboardComponent.tieState.placePiece()).toHaveBeenCalled;
+    spyOn(window, "alert");
+    gameboardComponent.tieState.placePiece();
+    expect(window.alert).toHaveBeenCalled();
   });
 
   it("should reset game if resetGame method called", () => {
@@ -44,7 +35,7 @@ describe("tie state", () => {
       ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
       ["Player One", "Player One", "Player One", "Player Two", "Player Two", "Player Two"],
       ["Player Two", "Player Two", "Player Two", "Player One", "Player One", "Player One"],
-      ["open", "Player Two", "Player One", "Player Two", "Player One", "Player Two"]
+      ["Player One", "Player Two", "Player One", "Player Two", "Player One", "Player Two"]
     ];
     gameboardComponent.gameboard = currentGameboard;
     gameboardComponent.resetGame();

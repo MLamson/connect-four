@@ -24,11 +24,11 @@ export abstract class Player implements State {
 
     this.placePieceInLowestOpenSpace(column);
 
-    if (this.checkIfWin()) {
+    if (this.gameHasWinner()) {
       this.gameboardComponent.changeToWonState(this.currentPlayer);
       return;
     }
-    if (this.checkIfTie()) {
+    if (this.gameIsTied()) {
       this.gameboardComponent.changeToTieState();
       return;
     }
@@ -44,11 +44,11 @@ export abstract class Player implements State {
     }
   }
 
-  checkIfWin(): boolean {
+  gameHasWinner(): boolean {
     return this.checkWinner.checkWin(this.gameboardComponent.gameboard);
   }
 
-  checkIfTie(): any {
+  gameIsTied(): any {
     return this.checkWinner.checkTie(this.gameboardComponent.gameboard);
   }
 }

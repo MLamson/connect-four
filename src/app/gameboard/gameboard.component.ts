@@ -3,9 +3,11 @@ import { WonState } from "../won-state";
 import { TieState } from "../tie-state";
 import { PlayerOneState } from "../player-one-state";
 import { PlayerTwoState } from "../player-two-state";
+import { BuiltGameboard } from "./built-gameboard";
 
 @Component({
   selector: "app-game-board",
+  providers: [ BuiltGameboard ],
   templateUrl: "gameboard.component.html",
   styleUrls: ["gameboard.component.css"]
 })
@@ -16,6 +18,7 @@ export class GameboardComponent {
   tieState: TieState;
   state: State;
   gameboard: any;
+  builtGameboard: BuiltGameboard;
 
   initialGameboard: any = [
     ["open", "open", "open", "open", "open", "open"],

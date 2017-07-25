@@ -23,7 +23,7 @@ describe("won state", () => {
     let gameboardComponent: GameboardComponent = new GameboardComponent();
     spyOn(window, "alert");
     gameboardComponent.wonState.placePiece();
-    expect(window.alert).toHaveBeenCalled();
+    expect(window.alert).toHaveBeenCalledWith('game over, cannot add anymore checkers');
   });
 
   it("should reset game if resetGame method called", () => {
